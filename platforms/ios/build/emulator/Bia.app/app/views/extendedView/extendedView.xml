@@ -1,0 +1,58 @@
+<Page loaded="pageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="pageNavigating" id="extended" class="page" actionBarHidden="true" >
+	<ScrollView orientation="vertical" id="scrollview">
+		<!-- <Image src="res://logo_login" class="title"/>  -->
+		<StackLayout id = "stackPage">
+			
+			<Image src="{{ number }}" stretch="aspectFit" class="smallNumber"></Image>
+			<Image src="res://oval" stretch="aspectFit" class="oval"></Image>
+			<StackLayout class="infoBox" id="infoBox">
+
+				<Label text="Things to expect" class="subtitle inBox"/>
+				<Label text="{{ expectations }}" class="message" textWrap="true"/>
+
+				<Label text="Time to..." class="subtitle inBox"/>
+				<Label text="{{ recommendations }}" class="message" textWrap="true"/>
+
+			</StackLayout>
+			<Image src="res://Ribbon" stretch="aspectFit" class="ribbon"></Image>
+
+		<StackLayout class="bcBox">
+			<Label text="Your Birth Control" class="subtitle outBox"/>
+			<Label text="{{ bcText }}" class="message-two" textWrap="true"/>
+			<Label text="{{ bcTime }}" class="countdown" id="countdown" textWrap="true"/>
+		</StackLayout>
+		<Button text="Update Settings" tap="goToSettings" class="settingsBtn"/>
+
+
+		<Label text="Your Rhythm" class="subtitle outBox"/>
+		<!-- Create calendar widget -->
+			<GridLayout columns="*,*,*,*,*,*,*" rows="2*,*,*,*,*,*,*,*" id="calendar">
+				<Button text="<" row="0" col="0" tap="renderPrevMonth" class="arrows"/>
+			<!-- 	<Label text="{{ month }}" row="0" col="1" colSpan="5"/> -->
+				<Button text=">" row="0" col="6" tap="renderNextMonth" class="arrows"/>
+			</GridLayout>
+
+		<StackLayout orientation="horizontal" id="key" style="margin-bottom: 2%">
+			<StackLayout orientation="horizontal">
+				<Image src="res://pinkCircle" stretch="aspectFit" class="labelKey"></Image>
+				<Label text="On your period." class="label"/>
+			</StackLayout>
+			
+			<StackLayout orientation="horizontal" class="right">
+				<Image src="res://blueCircle" stretch="aspectFit" class="labelKey"></Image>
+				<Label text="Ovulating." class="label"/>
+			</StackLayout>
+
+			<!-- Period toggle - need to align programmatically too -->
+		</StackLayout>
+
+
+		<Label text="{{ quote }}" class="message-two quote" id="quote" textWrap="true"/>
+		<Label text="{{ author }}" class="author" id="author" textWrap="true"/>
+
+		</StackLayout>
+
+
+	</ScrollView>
+	 
+</Page>

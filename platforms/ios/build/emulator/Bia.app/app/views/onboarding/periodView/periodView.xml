@@ -1,0 +1,18 @@
+<Page loaded="pageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd"  navigatingTo="pageNavigating" id="landing" class="page" actionBarHidden="true">
+	<StackLayout class="labelStack">
+		<Image src="res://gettingStarted" stretch="aspectFit" class="oval"></Image>
+
+
+		<Label text="Do you get your period?" class="prompt"/>
+
+		<GridLayout rows="auto" columns="*,*,*,*" class="center">
+			<Button row="0" col="1" text="yes" tap="setGetPeriod" class="buttonOption" id="yesBtn"/>
+			<Button row="0" col="2" text="no" tap="setNoGetPeriod" class="buttonOption" id="noBtn"/>
+		</GridLayout>
+
+
+		<Image src="res://RightArrow" stretch="aspectFit" tap="goToNextView" class="arrow"/>
+
+	</StackLayout>
+
+</Page>

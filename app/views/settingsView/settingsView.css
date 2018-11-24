@@ -1,0 +1,99 @@
+.page {
+	background-color: #081A40;
+}
+
+.title {
+	text-align: center;
+}
+
+Label {
+	color: white;
+}
+
+#grid {
+	width: 80%;
+	margin-top: 5%;
+	margin-bottom: -7%;
+	margin-left: 10%;
+	margin-right: 10%;
+	height: 80%;
+
+}
+
+.title {
+	font-size: 35%;
+	color: white;
+	padding-bottom: 10%;
+	font-family: Butler;
+	font-weight: bold;
+}
+
+#timePicker {
+	height: 300px;
+	z-index: 1;
+	margin: 5%;
+}
+
+#datePicker {
+	height: 300px;
+	margin-top: 40px;
+}
+
+.doneBtn {
+	color: #EA9D97;
+	margin-bottom: 40px;
+}
+
+.labelStack {
+	margin-top: 5%;
+}
+
+.prompt {
+	color: #CDD8FF;
+	font-size: 15%;
+	text-transform: uppercase;
+	font-family: Avenir;
+	vertical-align: top;
+}
+
+.textField {
+	font-family: Avenir;
+	font-size: 15%;
+	text-align: left;
+	vertical-align: top;
+}
+
+.grid {
+	text-align: left;
+	vertical-align: top;
+}
+
+.settingsBtn {
+	border-width: 3px;
+	color: white;
+	border-color: white;
+	font-size: 11%;
+	width: 30%;
+	padding: 10%;
+	border-radius: 30%;
+	margin-bottom: 3%;
+}
+
+.buttonOption {
+	color: #76a6f2;
+	font-size: 15%;
+	text-transform: uppercase;
+	font-family: Avenir;
+	margin-top: -10%;
+	margin-bottom: 4%
+}
+
+.buttonSelected: {
+	color: white;
+	font-weight: bold;
+	font-size: 15%;
+	text-transform: uppercase;
+	font-family: Avenir;
+	margin-top: -10%;
+	margin-bottom: 4%
+}

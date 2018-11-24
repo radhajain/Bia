@@ -1,0 +1,14 @@
+<Page loaded="pageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd"  navigatingTo="pageNavigating" id="landing" class="page" actionBarHidden="true">
+	<StackLayout class="labelStack">
+		<Image src="res://gettingStarted" stretch="aspectFit" class="oval"></Image>
+		<Label text="Hey there!" class="title"/>
+
+		<Label text="Please enter your name" class="prompt"/>
+
+		<TextField text="{{ name }}" autocorrect="false" autocapitalization="none" style="color:white" id="name" class="textField" returnPress="addName" focus="onFocus"/>
+
+		<Image src="res://RightArrow" stretch="aspectFit" tap="goToContraceptionView" class="arrow"/>
+
+	</StackLayout>
+	 
+</Page>

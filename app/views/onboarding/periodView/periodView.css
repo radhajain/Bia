@@ -1,0 +1,75 @@
+.page {
+	background-color: #081A40;
+}
+
+Label {
+	text-align: center;
+}
+
+.labelStack {
+	margin-top: 5%;
+}
+
+.oval {
+	margin-top: 12%;
+	height: 24%;
+	margin-bottom: 5%;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.title {
+	font-size: 35%;
+	color: white;
+	padding-bottom: 10%;
+	font-family: serif;
+}
+
+.prompt {
+	margin-top: 8%;
+	margin-bottom: 3%;
+	color: #CDD8FF;
+	font-size: 15%;
+	text-transform: uppercase;
+	font-family: Avenir;
+	width: 80%;
+	text-align: center;
+	font-weight: bold;
+}
+
+TextField {
+	width: 60%;
+	color: white;
+	text-align: center;
+	border-bottom-width: 0.25;
+	border-color: lightblue;
+	font-family: Avenir;
+}
+
+
+.buttonOption {
+	color: #76a6f2;
+	font-size: 15%;
+	text-transform: uppercase;
+	font-family: Avenir;
+}
+
+.buttonSelected {
+	color: white;
+	font-weight: bold;
+	font-size: 15%;
+	text-transform: uppercase;
+	font-family: Avenir;
+}
+
+.center {
+	width: 100%;
+	text-align: center;
+}
+
+.arrow {
+	width: 8%;
+	margin-left: 46%;
+	margin-right: 46%;
+	margin-top: 15%;
+}
