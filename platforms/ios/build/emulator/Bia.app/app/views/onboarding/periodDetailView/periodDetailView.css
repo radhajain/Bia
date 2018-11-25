@@ -12,20 +12,21 @@ Label {
 
 .oval {
 	margin-top: 12%;
-	height:24%;
+	height: 24%;
 	margin-bottom: 12%;
-	margin-left:20%;
+	margin-left: 20%;
 	margin-right: 20%;
 }
 
 
 .prompt {
-	margin-top: 4%;
+	margin-top: 3%;
 	margin-bottom: 3%;
 	color: #CDD8FF;
 	font-size: 15%;
 	text-transform: uppercase;
 	font-family: Avenir;
+	font-weight: bold;
 }
 
 TextField {
@@ -38,7 +39,7 @@ TextField {
 }
 
 .numDays {
-	margin-top: 1%;
+	margin-top: 5%;
 	color: #CDD8FF;
 	text-align: center;
 	font-size: 12%;
@@ -48,25 +49,18 @@ TextField {
 
 .arrow {
 	width: 8%;
-	margin-left:46%;
+	margin-left: 46%;
 	margin-right: 46%;
-	margin-top: 11%;
+	margin-top: 10%;
 }
 
 #datePicker {
 	height: 32%;
 	z-index: 1;
-	background-color: rgba(255,255,255, 0.05);
 	font-family: Avenir;
 	border-radius: 5%;
 }
 
 .doneBtn {
-	height: 6%;
-	background-color: #F0A68A;
-	color: white;
-	font-size: 15%;
-	border-radius: 2pt;
-	font-family: Avenir;
-	text-transform: uppercase;
+	color: #F0A68A;
 }

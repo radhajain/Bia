@@ -18,7 +18,13 @@ exports.pageNavigating = function (args) {
 		var nameText = page.getViewById("name");
 		nameText.text = StorageUtil.getName();
 	}
-	console.log(StorageUtil.getName());
+	//TODO: if swipe left, exports.goToContraceptionView()
+	var observer = page.observe(gestures.GestureTypes.swipe, function (args) {
+		//If swipe down on the screen, go to extended page
+		if (args.direction == 2) {
+			exports.goToContraceptionView();
+		}
+	});
 
 	// var pushPlugin = require("nativescript-push-notifications");
 	// var pushSettings = {
@@ -33,7 +39,6 @@ exports.pageNavigating = function (args) {
 	// }, function () {});
 
 }
-
 
 
 //----- TEXT FIELD INPUT -----
@@ -64,8 +69,6 @@ exports.goToContraceptionView = function () {
 	if (!StorageUtil.getName()) {
 		exports.addName();
 	}
-	console.log(StorageUtil.getName());
-
 	//Ensure that the user has filled out all fields
 	if (!StorageUtil.getName()) {
 		dialogs.alert({
@@ -76,7 +79,7 @@ exports.goToContraceptionView = function () {
 			console.log("Dialog closed");
 		});
 	} else {
-		frameModule.topmost().navigate('views/onboarding/periodView/periodView');
+		frameModule.topmost().navigate('views/onboarding/bcView/bcView');
 	}
 
 }

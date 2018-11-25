@@ -3,7 +3,6 @@
 		<Image src="{{ number }}" stretch="aspectFit" class="oval"></Image>
 		<Label text="{{ greeting }}" id="greeting" class="title" textWrap="true"/>
 
-		<!-- TODO: replace with Modal -->
 		<Image src="res://exclamation" stretch="aspectFit" class="exclamation" visibility="{{ showWarning ? 'visible' : 'collapsed'}}"></Image>
 		<StackLayout id="warning" class="warningBox" visibility="{{ showWarning ? 'visible' : 'collapsed'}}">
 			<Label text="{{ pillReminder }}" class="pillReminderText" textWrap="true"/>
@@ -13,6 +12,15 @@
 
 		</StackLayout>	
 		
+		<!-- TODO: Prewarning box -->
+		<!-- <Image src="res://exclamation" stretch="aspectFit" class="exclamation" visibility="{{ showPreWarning ? 'visible' : 'collapsed'}}"></Image>
+		<StackLayout id="warning" class="warningBox" visibility="{{ showWarning ? 'visible' : 'collapsed'}}">
+			<Label text="{{ pillReminder }}" class="pillReminderText" textWrap="true"/>
+			<StackLayout orientation="horizontal" class="buttons">
+				<Button text="Took my pill" tap="dismiss" class="responseBtn wide"/>
+			</StackLayout>
+
+		</StackLayout>	 -->
 			
 		<StackLayout class="infoBox" visibility="{{ showWarning ? 'collapsed' : 'visible'}}">	
 			<Label text="{{ message }}" id="message" class="info" textWrap="true" />

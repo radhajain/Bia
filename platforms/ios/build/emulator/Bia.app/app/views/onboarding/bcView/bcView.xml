@@ -1,0 +1,24 @@
+<Page loaded="pageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd"  navigatingTo="pageNavigating" id="landing" class="page" actionBarHidden="true">
+	<StackLayout class="labelStack">
+		<Image src="res://gettingStarted" stretch="aspectFit" class="oval"></Image>
+
+		<Label text="What type of pill do you take?" class="prompt" textWrap="true"/>
+		<GridLayout rows="auto" columns="*,4*,4*,*" class="center">
+			<Button row="0" col="1" text="Combined" tap="setCombinedPill" class="buttonOption" id="combinedBtn"/>
+			<Button row="0" col="2" text="Progesterin-only" textWrap="true" tap="setPOPPill" class="buttonOption" id="popBtn"/>
+		</GridLayout>
+
+
+		<Label text="What time do you take your pill?" class="prompt" textWrap="true"/>
+        <Button text="{{ pillTime }}" style="color:white" id="periodStart" class="textField" tap="selectPillTime" textWrap="true" visibility="{{ showTimePicker ? 'collapse' : 'visible'}}"/>
+
+		<StackLayout visibility="{{ showTimePicker ? 'visible' : 'collapse'}}" class="timePicker">
+			<TimePicker  date="{{ date }}" loaded="onPickerLoaded" verticalAlignment="center" class="m-15" id="timePicker" style="color:white; height: 50%"></TimePicker>
+			<Button text="Save" tap="setTime" class="doneBtn"/>
+        </StackLayout>
+
+		<Image src="res://RightArrow" stretch="aspectFit" tap="goToNextView" class="arrow"/>
+
+	</StackLayout>
+
+</Page>

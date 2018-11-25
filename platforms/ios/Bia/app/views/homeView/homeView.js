@@ -18,7 +18,7 @@ exports.pageLoaded = function (args) {
 	//TEMP
 	var temp = new Date();
 	var otherTemp = new Date();
-	otherTemp.setDate(temp.getDate() - 3);
+	otherTemp.setDate(temp.getDate() - 2);
 	StorageUtil.setlastTimePillTaken(otherTemp);
 	//TEMP
 	page = args.object;
@@ -101,7 +101,12 @@ showAsapReminder = function (simpleTime) {
 	BCLateTime.setHours(BCLateTime.getHours() + InfoUtil.getLatePeriod());
 	var simpleLateTime = ComputeUtil.printSimpleTime(BCLateTime.getHours(), BCLateTime.getMinutes());
 	pageData.set("showWarning", true);
-	var msg = "Your pill was scheduled for " + simpleTime + ". \n If you take it before " + simpleLateTime.hours + ":" + simpleLateTime.min + simpleLateTime.ampm + " you will be protected. Take it asap!";
+	if (StorageUtil.getBirthControlType() == "combined") {
+		var msg = "Your pill was scheduled for " + simpleTime + ". \n Take it before " + simpleTime + " tomorrow to stay protected!";
+	} else {
+		var msg = "Your pill was scheduled for " + simpleTime + ". \n If you take it before " + simpleLateTime.hours + ":" + simpleLateTime.min + simpleLateTime.ampm + " you will be protected. Take it asap!";
+	}
+
 	pageData.set("pillReminder", msg);
 
 }
@@ -112,14 +117,18 @@ showTwoAsapReminder = function () {
 	pageData.set("pillReminder", msg);
 }
 
+//Depending on what pill state was before
 exports.dismiss = function () {
 	//record pill taken
 	var rightNow = new Date();
+	console.log("pill state is: " + StorageUtil.getPillState());
 	if (StorageUtil.getPillState() == "late" && ComputeUtil.tookPillDayBeforeYesterday()) {
 		//Set that took pill yesterday so that doesn't dismiss pill taken today.
 		var yesterday = new Date();
 		yesterday.setDate(rightNow.getDate() - 1);
 		StorageUtil.setlastTimePillTaken(yesterday);
+	} else if (StorageUtil.getPillState() == "missed2") {
+		StorageUtil.setlastTimePillTaken(rightNow);
 	} else {
 		StorageUtil.setlastTimePillTaken(rightNow);
 	}

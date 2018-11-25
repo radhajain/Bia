@@ -34,6 +34,12 @@ exports.pageNavigating = function (args) {
 	//this should be in the setDate function but it isn't being called
 	var today = new Date();
 	StorageUtil.setlastTimePillTaken(today.toISOString());
+	var observer = page.observe(gestures.GestureTypes.swipe, function (args) {
+		//If swipe down on the screen, go to extended page
+		if (args.direction == 2) {
+			exports.goToHomeView();
+		}
+	});
 	console.log("last time pill taken in onboarding " + StorageUtil.getlastTimePillTaken());
 
 }
@@ -63,7 +69,7 @@ exports.setDate = function () {
 	pageData.set('showDatePicker', false);
 	var textField = page.getViewById("periodStart");
 	textField.text = datePicker.date.toDateString();
-	StorageUtil.setFirstCycleDay(datePicker.date);
+	StorageUtil.setPeriodStartDay(datePicker.date);
 	textField.dismissSoftInput();
 }
 
@@ -81,7 +87,7 @@ exports.goToHomeView = function () {
 	setPeriodLength();
 
 	//Ensure that the user has filled out all fields
-	if (!StorageUtil.getFirstCycleDay() || !StorageUtil.getPeriodLength()) {
+	if (!StorageUtil.getPeriodStartDay() || !StorageUtil.getPeriodLength()) {
 		dialogs.alert({
 			title: "Not so fast!",
 			message: "Please fill out all fields to continue",

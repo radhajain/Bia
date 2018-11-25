@@ -2,6 +2,10 @@
 	<StackLayout class="labelStack">
 		<Image src="res://gettingStarted" stretch="aspectFit" class="oval"></Image>
 
+		<StackLayout>
+			<Label text="What day of your pills are you on?" class="prompt" textWrap="true"/>
+			<TextField text="{{ pillDay }}" keyboardType="number" style="color:white" id="pillDay" class="textField" returnPress="addPillDay" focus="onFocus"/>
+		</StackLayout>
 
 		<Label text="Do you get your period?" class="prompt"/>
 
@@ -9,6 +13,15 @@
 			<Button row="0" col="1" text="yes" tap="setGetPeriod" class="buttonOption" id="yesBtn"/>
 			<Button row="0" col="2" text="no" tap="setNoGetPeriod" class="buttonOption" id="noBtn"/>
 		</GridLayout>
+
+		<!-- <StackLayout visibility="{{ getsPeriod ? 'visible' : 'collapse'}}" style="margin-top: 3%;">
+
+			<Label text="My Period Usually Lasts" class="prompt"/>
+			<TextField text="{{ periodLength }}" keyboardType="phone" focus="onFocus" id="periodLength"/>
+			<Label text="days" class="numDays"/>
+
+		</StackLayout> -->
+
 
 
 		<Image src="res://RightArrow" stretch="aspectFit" tap="goToNextView" class="arrow"/>

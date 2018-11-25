@@ -14,6 +14,12 @@ var currChoice;
 exports.pageNavigating = function (args) {
 	page = args.object;
 	page.bindingContext = pageData;
+	var observer = page.observe(gestures.GestureTypes.swipe, function (args) {
+		//If swipe down on the screen, go to extended page
+		if (args.direction == 2) {
+			exports.goToNextView();
+		}
+	});
 
 	// var pushPlugin = require("nativescript-push-notifications");
 	// var pushSettings = {
@@ -49,10 +55,21 @@ exports.setNoGetPeriod = function (args) {
 	}
 }
 
+//TODO: error checking here
+exports.setCycleDay = function () {
+	var cycleDayField = page.getViewById("pillDay");
+	var cycleDay = cycleDayField.text;
+	var today = new Date();
+	var firstCycleDay = new Date();
+	firstCycleDay.setDate(today.getDate() - (cycleDay - 1));
+	StorageUtil.setFirstCycleDay(firstCycleDay);
+}
+
 
 // ---- NAVIGATION -----
 
 exports.goToNextView = function () {
+	exports.setCycleDay();
 	if (currChoice == "yes") {
 		StorageUtil.setDoesGetPeriod(true)
 	} else if (currChoice == "no") {
@@ -61,7 +78,7 @@ exports.goToNextView = function () {
 		//Ensure that the user has filled out all fields
 		dialogs.alert({
 			title: "Not so fast!",
-			message: "Please tap an option to continue",
+			message: "Please fill out all fields to continue",
 			okButtonText: "Ok"
 		}).then(function () {
 			console.log("Dialog closed");

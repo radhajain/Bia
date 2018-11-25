@@ -4,6 +4,7 @@ var frameModule = require("ui/frame");
 var pageData = new observable.Observable();
 const DatePicker = require("tns-core-modules/ui/date-picker").DatePicker;
 var StorageUtil = require("~/util/StorageUtil");
+var ComputeUtil = require("~/util/ComputeUtil");
 var gestures = require("ui/gestures");
 var dialogs = require("ui/dialogs");
 
@@ -18,9 +19,12 @@ exports.pageNavigating = function (args) {
 	pageData.set("showDatePicker", false);
 	pageData.set("showSave", true);
 	initName();
-	initPeriodLength();
-	initPeriodStart();
+	if (StorageUtil.getDoesGetPeriod()) {
+		initPeriodLength();
+		initPeriodStart();
+	}
 	initPeriodOptions();
+
 }
 
 /*********************
@@ -41,8 +45,10 @@ function initPeriodOptions() {
 	var doesGetPeriod = StorageUtil.getDoesGetPeriod();
 	if (doesGetPeriod) {
 		page.getViewById("Yes").className = 'buttonSelected';
+		pageData.set("showPeriod", true);
 	} else {
 		page.getViewById("No").className = 'buttonSelected';
+		pageData.set("showPeriod", false);
 	}
 }
 
@@ -74,20 +80,20 @@ exports.onPickerLoaded = function (args) {
 	//Auto load picker to the current stored birth control time
 	var timePicker = args.object;
 	var previousTime = StorageUtil.getBirthControlTime();
-	var prevHour = previousTime.getHours();
-	var prevMins = previousTime.getMinutes();
-	pageData.set("pillTime", prevHour + ":" + prevMins.toString());
-	timePicker.hour = prevHour;
-	timePicker.minute = prevMins;
+	var simpleTime = ComputeUtil.printSimpleTime(previousTime.getHours(), previousTime.getMinutes());
+	pageData.set("pillTime", simpleTime.hours + ":" + simpleTime.min + simpleTime.ampm);
+	timePicker.hour = previousTime.getHours();
+	timePicker.minute = previousTime.getMinutes();
 }
 
 exports.setTime = function (args) {
 	var timePicker = page.getViewById("timePicker");
-	pageData.set("pillTime", timePicker.hour + ":" + timePicker.minute.toString());
 	var newTime = new Date();
 	newTime.setHours(timePicker.hour);
 	newTime.setMinutes(timePicker.minute);
 	StorageUtil.setBirthControlTime(newTime);
+	var simpleTime = ComputeUtil.printSimpleTime(timePicker.hour, timePicker.minute);
+	pageData.set("pillTime", simpleTime.hours + ":" + simpleTime.min + simpleTime.ampm);
 	pageData.set("showTimePicker", false);
 	pageData.set("showSave", true);
 }
@@ -117,6 +123,7 @@ exports.setPeriod = function () {
 		StorageUtil.setDoesGetPeriod(true);
 	}
 	clearSelected();
+	pageData.set("showPeriod", true);
 	page.getViewById("Yes").className = "buttonSelected";
 }
 
@@ -127,6 +134,7 @@ exports.setNoPeriod = function () {
 		StorageUtil.setDoesGetPeriod(false);
 	}
 	clearSelected();
+	pageData.set("showPeriod", false);
 	page.getViewById("No").className = "buttonSelected";
 }
 
@@ -167,6 +175,7 @@ exports.goToExtendedView = function () {
 	exports.updateName();
 	exports.updatePeriodLength();
 	exports.updateBCTime();
+	StorageUtil.setPillState();
 
 	frameModule.topmost().navigate('views/extendedView/extendedView');
 }

@@ -20,7 +20,6 @@ var DAYS = ["M", "Tu", "W", "Th", "F", "S", "S"];
 var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var currDate;
 var cycleDay;
-var OVULATION_OFFSET = 12;
 var MONTH_ENUM = 0;
 var MINS_IN_DAY = 1440;
 
@@ -45,8 +44,8 @@ exports.pageLoaded = function (args) {
 			});
 		}
 	});
-	initExpectations();
-	initRecommendations();
+	// initExpectations();
+	// initRecommendations();
 	initCalendar();
 	initBirthControl();
 	initQuote();
@@ -62,23 +61,22 @@ function initNumber() {
 
 //Since page is a scroll view, cannot dynamically set height in CSS
 function initFormatting() {
-	var infoBox = page.getViewById("infoBox");
-	infoBox.height = 0.3 * pageHeight;
-
+	// var infoBox = page.getViewById("infoBox");
+	// infoBox.height = 0.3 * pageHeight;
 	var stackPage = page.getViewById("stackPage");
-	stackPage.height = 1.65 * pageHeight;
+	stackPage.height = 1.25 * pageHeight;
 }
 
 
-function initExpectations() {
-	var expectations = InfoUtil.getExpectations(cycleDay);
-	pageData.set("expectations", expectations);
-}
+// function initExpectations() {
+// 	var expectations = InfoUtil.getExpectations(cycleDay);
+// 	pageData.set("expectations", expectations);
+// }
 
-function initRecommendations() {
-	var recommendations = InfoUtil.getRecommendations(cycleDay);
-	pageData.set("recommendations", recommendations);
-}
+// function initRecommendations() {
+// 	var recommendations = InfoUtil.getRecommendations(cycleDay);
+// 	pageData.set("recommendations", recommendations);
+// }
 
 //Set's up the static aspects of the calendar (e.g. Weekday Labels and arrows)
 function initCalendar() {
@@ -126,21 +124,25 @@ function initMonthTitle(monthIndex, year) {
 
 
 //Adds dates to the calendar, tracking today's date and the date of the last period
+//TODO: change ovulation date to start of cycle
 function initDates(monthIndex, year) {
-	var periodLength = parseInt(StorageUtil.getPeriodLength(), 10);
-	//Current month:
-	var periodStartDate = addDays(StorageUtil.getFirstCycleDay(), MONTH_ENUM * 28);
-	var periodEndDate = addDays(periodStartDate, periodLength - 1);
-	//Next Month:
-	var periodStartDate2 = addDays(periodStartDate, 28);
-	var periodEndDate2 = addDays(periodStartDate2, periodLength - 1);
-	//Previous month:
-	var periodStartDate3 = subtractDays(periodStartDate, 28);
-	var periodEndDate3 = addDays(periodStartDate3, periodLength - 1);
-
-	var ovulationDate = addDays(periodStartDate, OVULATION_OFFSET);
-	var ovulationDate2 = addDays(periodStartDate2, OVULATION_OFFSET);
-	var ovulationDate3 = addDays(periodStartDate3, OVULATION_OFFSET);
+	if (StorageUtil.getDoesGetPeriod()) {
+		var periodLength = parseInt(StorageUtil.getPeriodLength(), 10);
+		//Current month:
+		var periodStartDate = addDays(StorageUtil.getPeriodStartDay(), MONTH_ENUM * 28);
+		var periodEndDate = addDays(periodStartDate, periodLength - 1);
+		//Next Month:
+		var periodStartDate2 = addDays(periodStartDate, 28);
+		var periodEndDate2 = addDays(periodStartDate2, periodLength - 1);
+		//Previous month:
+		var periodStartDate3 = subtractDays(periodStartDate, 28);
+		var periodEndDate3 = addDays(periodStartDate3, periodLength - 1);
+	}
+	//This month?
+	console.log("first day of cycle at " + StorageUtil.getFirstCycleDay());
+	var cycleStartDate = addDays(StorageUtil.getFirstCycleDay(), MONTH_ENUM * 28);
+	var cycleStartDate2 = addDays(cycleStartDate, 28);
+	var cycleStartDate3 = subtractDays(cycleStartDate, 28);
 
 	// ---*****Need to log period dates for every month (28-day cycle)***-----
 
@@ -171,14 +173,14 @@ function initDates(monthIndex, year) {
 			} else {
 				dayCell.class = "cell active";
 			}
-			if ((dateBetween(periodStartDate, periodEndDate, monthDay) ||
+			if (StorageUtil.getDoesGetPeriod() && (dateBetween(periodStartDate, periodEndDate, monthDay) ||
 					dateBetween(periodStartDate2, periodEndDate2, monthDay) ||
-					dateBetween(periodStartDate3, periodEndDate3, monthDay)) &&
-				StorageUtil.getDoesGetPeriod()) {
+					dateBetween(periodStartDate3, periodEndDate3, monthDay))) {
 				dayCell.class += " period";
-			} else if (dateEquals(monthDay, ovulationDate) ||
-				dateEquals(monthDay, ovulationDate2) ||
-				dateEquals(monthDay, ovulationDate3)) {
+			}
+			if (dateEquals(monthDay, cycleStartDate) ||
+				dateEquals(monthDay, cycleStartDate2) ||
+				dateEquals(monthDay, cycleStartDate3)) {
 				dayCell.class += " ovulation";
 			}
 			if (dateEquals(monthDay, today)) {
@@ -282,50 +284,51 @@ function yesterday(d1, d2) {
 }
 
 
-function initBirthControl() {
-	var timeToTakePill = StorageUtil.getBirthControlTime();
-	var options = {
-		timeZone: 'UTC',
-		timeZoneName: 'short'
-	};
-
-	var type = "progesterone-only pill";
-	var msg = "You are currently using the " + type + " at " + timeToTakePill.toLocaleTimeString('en-US', options) + ".";
-	// Countdown element
-	msg += "\n Scheduled to be taken in: ";
-	var countdownMins = StorageUtil.minsTillBirthControl();
-	console.log("time taken from extended view: " + timeToTakePill.toString());
-	var timePillTakenLast = StorageUtil.getlastTimePillTaken();
-	var today = new Date();
-	//var tookPillToday = sameDay(today, timePillTakenLast);
-	var tookPillToday = false;
-	var tookPillYesterday = true;
-	//var tookPillYesterday = yesterday(today, timePillTakenLast)
-
-
+function printHourMins(countdownMins) {
+	var hours = Math.floor(countdownMins / 60);
+	var mins = countdownMins % 60;
 	var bcTime;
-	if (tookPillToday) {
-		countdownMins += MINS_IN_DAY
-		var numHours = Math.floor(countdownMins / 60);
-		var numMins = countdownMins % 60;
-		if (numHours > 0) {
-			bcTime = numHours + " hrs " + numMins + " mins";
+	if (hours > 0) {
+		if (mins > 0) {
+			bcTime = hours + " hrs " + mins + " mins";
 		} else {
-			bcTime = minutesCountdown + " mins";
+			bcTime = hours + " hrs";
 		}
-		pageData.set("bcTime", bcTime);
-	} else if (tookPillYesterday) {
-		var numHours = Math.floor(countdownMins / 60);
-		var numMins = countdownMins % 60;
-		if (numHours > 0) {
-			bcTime = numHours + " hrs " + numMins + " mins";
-		} else {
-			bcTime = numMins + " mins";
-		}
+	} else {
+		bcTime = mins + " mins";
+	}
+	return bcTime;
+}
+
+
+//TODO: modify so that corresponds with pill state
+function initBirthControl() {
+	var timeToTakePill = ComputeUtil.printSimpleBCTime();
+	var type = StorageUtil.getBirthControlType();
+	var msg = "You are currently taking the " + type + " pill, usually taken at " + timeToTakePill + ". \n \n";
+	// Countdown element
+
+	//StorageUtil.minsTillBirthControl assumes you took the pill as normal yesterday/today
+
+	var countdownMins = StorageUtil.minsTillBirthControl();
+	var bcTime;
+	//normal, asap, two-asap, tomorrow
+	var nextPillState = InfoUtil.nextPillAt();
+	if (nextPillState == "normal") {
+		msg += "Scheduled to be taken in:";
+		bcTime = printHourMins(countdownMins);
+	} else if (nextPillState == "asap" || nextPillState == "two-asap") {
+		msg += "To be protected, take your pill within the next:"
+		var minsTillBCLateEnd = ComputeUtil.minsTillBCLateEnd();
+		bcTime = printHourMins(minsTillBCLateEnd);
+		var countdown = page.getViewById("countdown");
+		countdown.className = "countdownAlert";
+
 	}
 	pageData.set("bcTime", bcTime);
 	pageData.set("bcText", msg);
 }
+
 
 
 

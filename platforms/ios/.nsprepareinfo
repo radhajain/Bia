@@ -1,23 +1,24 @@
 {
-	"time": "Fri Nov 23 2018 20:02:00 GMT-0800 (PST)",
+	"time": "Sat Nov 24 2018 21:46:23 GMT-0800 (PST)",
 	"nativePlatformStatus": "3",
 	"bundle": false,
 	"release": false,
 	"changesRequireBuild": false,
 	"projectFileHash": "da566c563a5088feab9404f40dfc6ef13e41f3114fe633b3d4a08f5a7016f30b",
-	"changesRequireBuildTime": "Sat Nov 17 2018 20:00:18 GMT-0800 (PST)",
+	"changesRequireBuildTime": "Sat Nov 24 2018 21:35:29 GMT-0800 (PST)",
 	"appFilesHashes": {
+		"/Users/radhajain/Bia/app/.DS_Store": "9557d39817de4fca8103d2016fcbd2bc22c7e409",
 		"/Users/radhajain/Bia/app/app-root.xml": "900a386cb2d8abc9573413eb3aff45448dcd3608",
 		"/Users/radhajain/Bia/app/app.css": "6b35cf7fc669764bd611ef9fe3164457246cfaed",
 		"/Users/radhajain/Bia/app/app.js": "e22a5eb673130581b2d8087f3d1e3ad3490a229b",
 		"/Users/radhajain/Bia/app/bundle-config.js": "d17c2570811747318a75d48cef336b3c2945cf07",
 		"/Users/radhajain/Bia/app/fonts/.DS_Store": "df2fbeb1400acda0909a32c1cf6bf492f1121e07",
 		"/Users/radhajain/Bia/app/fonts/Butler_ExtraBold.otf": "0f8fa5016b17bd82ac227fb9a7cd92198ede73d2",
-		"/Users/radhajain/Bia/app/fonts/Butler_Light.otf": "1ea115a4384338021970da0a7766ed37278fa48b",
 		"/Users/radhajain/Bia/app/fonts/Butler_Medium.otf": "c602d42d06617e5108ead62261e140de193f74b9",
+		"/Users/radhajain/Bia/app/fonts/Butler_Light.otf": "1ea115a4384338021970da0a7766ed37278fa48b",
+		"/Users/radhajain/Bia/app/fonts/Butler_Regular.otf": "d5c3858708cc7b6880530881c69eeaf01f878ac5",
 		"/Users/radhajain/Bia/app/main-page.js": "e3dfd3fc75a4d41d3c3ea69bbfc2e52159919e19",
 		"/Users/radhajain/Bia/app/main-page.xml": "dadb79414737be842940881ad61a8bed20080077",
-		"/Users/radhajain/Bia/app/fonts/Butler_Regular.otf": "d5c3858708cc7b6880530881c69eeaf01f878ac5",
 		"/Users/radhajain/Bia/app/main-view-model.js": "f977a52b4fb31fe984415623f7597e914c24750d",
 		"/Users/radhajain/Bia/app/package.json": "76d2f371ccaf38f64ed764513b2b13292c218382",
 		"/Users/radhajain/Bia/app/references.d.ts": "c83a3304d98c2586359871f5d8ac10c8aa8af848",
@@ -29,8 +30,8 @@
 		"/Users/radhajain/Bia/app/views/extendedView/extendedView.js": "eb5b986816083ec1c86a94902c21a40fc1d4ff66",
 		"/Users/radhajain/Bia/app/views/extendedView/extendedView.xml": "b49c46c56b2af4840885f35ae862f3e005af558f",
 		"/Users/radhajain/Bia/app/views/homeView/homeView.css": "59423ba79cdfe708e3521bc7721f4cc72c191d22",
-		"/Users/radhajain/Bia/app/views/homeView/homeView.js": "eca69d12df7b53b11aeea31b741c716a4bebb6ae",
-		"/Users/radhajain/Bia/app/views/homeView/homeView.xml": "582aae9c53702375e131fc2256a5a6424c40c425",
+		"/Users/radhajain/Bia/app/views/homeView/homeView.js": "cdc14997576d64c5f76d207a8ef3e0d9ca5276a9",
+		"/Users/radhajain/Bia/app/views/homeView/homeView.xml": "98e434797b4b335fd48fe804abc3701cbafb6afd",
 		"/Users/radhajain/Bia/app/views/onboarding/.DS_Store": "e8e127af147f62e0ef7740fabc0a564b2a755f35",
 		"/Users/radhajain/Bia/app/views/onboarding/bcView/bcView.css": "d8fb3b8a5c035558d3d49b6ecde0b1e024ed107a",
 		"/Users/radhajain/Bia/app/views/onboarding/bcView/bcView.js": "528d49a1dce4eb948e86c142b6c0da9a2baa32c6",
@@ -46,6 +47,6 @@
 		"/Users/radhajain/Bia/app/views/onboarding/periodView/periodView.xml": "026fa2fbcab5fb3d56828e291a08fdd2607912d3",
 		"/Users/radhajain/Bia/app/views/settingsView/settingsView.css": "1511b6f53da24a67c6987ce9a72285a0eb878e02",
 		"/Users/radhajain/Bia/app/views/settingsView/settingsView.js": "6a40df2e6a775e77e57b1357bfac857af790a4aa",
-		"/Users/radhajain/Bia/app/views/settingsView/settingsView.xml": "62f5a556c2ba974d967e35de79b4179d1cde9891"
+		"/Users/radhajain/Bia/app/views/settingsView/settingsView.xml": "93155f4680210e49400580c18a2fc2e94051c239"
 	}
 }

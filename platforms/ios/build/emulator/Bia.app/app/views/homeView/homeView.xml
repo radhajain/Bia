@@ -5,15 +5,22 @@
 
 		<Image src="res://exclamation" stretch="aspectFit" class="exclamation" visibility="{{ showWarning ? 'visible' : 'collapsed'}}"></Image>
 		<StackLayout id="warning" class="warningBox" visibility="{{ showWarning ? 'visible' : 'collapsed'}}">
-			
 			<Label text="{{ pillReminder }}" class="pillReminderText" textWrap="true"/>
 			<StackLayout orientation="horizontal" class="buttons">
-				<Button text="Took my Pill" visibility="{{ secondWarning ? 'collapsed' : 'visible'}}" tap="dismiss" class="responseBtn left"/>
-				<Button text="Not Yet" visibility="{{ secondWarning ? 'collapsed' : 'visible'}}" tap="continueAlert" class="responseBtn right"/>
-				<Button text="Okay, I took it" visibility="{{ secondWarning ? 'visible' : 'collapsed'}}" tap="dismiss" class="responseBtn wide"/>
+				<Button text="Took my pill" tap="dismiss" class="responseBtn wide"/>
 			</StackLayout>
 
 		</StackLayout>	
+		
+		<!-- TODO: Prewarning box -->
+		<!-- <Image src="res://exclamation" stretch="aspectFit" class="exclamation" visibility="{{ showPreWarning ? 'visible' : 'collapsed'}}"></Image>
+		<StackLayout id="warning" class="warningBox" visibility="{{ showWarning ? 'visible' : 'collapsed'}}">
+			<Label text="{{ pillReminder }}" class="pillReminderText" textWrap="true"/>
+			<StackLayout orientation="horizontal" class="buttons">
+				<Button text="Took my pill" tap="dismiss" class="responseBtn wide"/>
+			</StackLayout>
+
+		</StackLayout>	 -->
 			
 		<StackLayout class="infoBox" visibility="{{ showWarning ? 'collapsed' : 'visible'}}">	
 			<Label text="{{ message }}" id="message" class="info" textWrap="true" />

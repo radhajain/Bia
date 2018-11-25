@@ -16,7 +16,7 @@
 
 		<!-- End Date Picker -->
 
-		<StackLayout visibility="{{ showDatePicker ? 'collapse' : 'visible'}}">
+		<StackLayout visibility="{{ showDatePicker ? 'collapse' : 'visible'}}" style="margin-top: 5%;">
 
 		<Label text="My Period Usually Lasts" class="prompt"/>
 

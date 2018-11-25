@@ -1,12 +1,12 @@
 <Page loaded="pageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd"  navigatingTo="pageNavigating" id="settings" class="page" actionBarHidden="true">
 	
 	<StackLayout class="labelStack">
-
-		<Label text="Settings" class="title"/>
-
-
+		<StackLayout heigh="100">
+			<Label text="Settings" class="title"/>
+		</StackLayout>
+		<ScrollView orientation="vertical" sdkExampleTitle sdkToggleNavButton> 
 		<GridLayout rows="60,60,auto,*,*,auto,*" columns="2*,*" id="grid">
-
+	
 			<Label text="Name" class="prompt" row="0" col="0"/>
 			<TextField row="0" col="1" text="{{ name }}" autocorrect="false" autocapitalization="none" style="color:white" id="name" class="textField" returnPress="updateName" focus="onFocus"/>
 
@@ -38,9 +38,10 @@
 			<TextField visibility="{{showPeriod ? 'visible' : 'collapse'}}" row="6" col="1" text="{{ periodLength }}" autocorrect="false" autocapitalization="none" style="color:white" id="periodLength" keyboardType="phone" class="textField" returnPress="updatePeriodLength" focus="onFocus"/>
 
 		</GridLayout>
+		
 
 		<Button visibility="{{ showSave ? 'visible' : 'collapse'}}" text="Save Changes" tap="goToExtendedView" class="settingsBtn"/>
-
+<		</ScrollView>
 
 
 	</StackLayout>
