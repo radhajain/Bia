@@ -1,6 +1,5 @@
 var appSettings = require("application-settings");
-var ComputeUtil = require("~/util/ComputeUtil");
-var InfoUtil = require("~/util/InfoUtil");
+
 
 var DAY_IN_MS = 86400000;
 var MIN_IN_MS = 60000;
@@ -14,22 +13,11 @@ var MINS_IN_DAY = 1440;
  * ----------------
  * Sets when pill was last taken.
  */
-exports.setlastTimePillTaken = function (date) {
-	appSettings.setString('lastTimePillTaken', JSON.stringify(date));
-}
-
-//Default set the last pill time taken was yesterday if before BC Timte
-//Otherwise, to today 
-exports.setDefaultlastTimePillTaken = function () {
-	console.log("setting default last pill date taken...");
+exports.setlastTimePillTaken = function () {
 	var today = new Date();
-	if (!ComputeUtil.beforePillTimeToday()) {
-		return appSettings.setString('lastTimePillTaken', JSON.stringify(today));
-	} else {
-		var bcDate = new Date();
-		bcDate.setDate(today.getDate() - 1);
-		appSettings.setString('lastTimePillTaken', JSON.stringify(bcDate));
-	}
+	today.setHours(9);
+	today.setMinutes(11);
+	appSettings.setString('lastTimePillTaken', JSON.stringify(today));
 }
 
 /* export: getlastTimePillTaken
@@ -37,94 +25,9 @@ exports.setDefaultlastTimePillTaken = function () {
  * Sets when pill was last taken.
  */
 exports.getlastTimePillTaken = function () {
-	console.log("getting pill date");
 	var time = new Date(JSON.parse(appSettings.getString('lastTimePillTaken')));
-	console.log("last pill taken at " + time);
 	return time;
 }
-
-
-/* export: getName
- * ---------------
- * Retrieves the user's name
- */
-exports.getPillState = function () {
-	return appSettings.getString('pillstate');
-};
-
-/* export: getName
- * ---------------
- * Retrieves the user's name
- */
-exports.setPillState = function () {
-	var BCtime = exports.getBirthControlTime();
-	var now = new Date();
-	if (exports.getBirthControlType() == "combined") {
-		setCombinedPillState(BCtime, now);
-	} else {
-		setPOPPillState(BCtime, now);
-	}
-};
-
-function setCombinedPillState(BCtime, now) {
-	//If after BCtime today
-	if (!ComputeUtil.beforePillTimeToday()) {
-		if (ComputeUtil.tookPillToday()) {
-			return appSettings.setString('pillstate', "ok");
-		}
-		if ((now.getHours() - BCtime.getHours()) < InfoUtil.getLatePeriod() && ComputeUtil.tookPillYesterday()) {
-			return appSettings.setString('pillstate', "late");
-		} else {
-			if (ComputeUtil.tookPillYesterday()) {
-				return appSettings.setString('pillstate', "missed");
-			} else {
-				if (ComputeUtil.tookPillDayBeforeYesterday()) {
-					return appSettings.setString('pillstate', "missed2");
-				} else {
-					return appSettings.setString('pillstate', "missed3");
-				}
-			}
-		}
-	} else {
-		//If before BCTime today
-		if (ComputeUtil.tookPillYesterday()) {
-			return appSettings.setString('pillstate', "ok");
-		} else {
-			if (ComputeUtil.tookPillDayBeforeYesterday()) {
-				//Missed yesterday
-				return appSettings.setString('pillstate', "missed");
-			} else if (ComputeUtil.tookPillThreeDaysAgo()) {
-				return appSettings.setString('pillstate', "missed2");
-			} else {
-				return appSettings.setString('pillstate', "missed3");
-			}
-		}
-
-	}
-}
-
-function setPOPPillState(BCtime, now) {
-	if (!ComputeUtil.beforePillTimeToday()) {
-		if (ComputeUtil.tookPillToday()) {
-			return appSettings.setString('pillstate', "ok");
-		}
-		if ((now.getHours() - BCtime.getHours()) < InfoUtil.getLatePeriod() && ComputeUtil.tookPillYesterday()) {
-			return appSettings.setString('pillstate', "late");
-		} else {
-			//Did not take pill today
-			return appSettings.setString('pillstate', "missed")
-		}
-	} else {
-		//Before pill time today
-		if (ComputeUtil.tookPillYesterday()) {
-			return appSettings.setString('pillstate', "ok");
-		} else {
-			return appSettings.setString('pillstate', "missed");
-		}
-	}
-}
-
-
 
 /* export: getGreeting
  * ----------------
@@ -144,11 +47,21 @@ exports.getGreeting = function () {
 }
 
 
+/* export: getCycleDay
+ * ----------------
+ * Gets the user's day in their cycle
+ */
+exports.getCycleDay = function () {
+	var today = new Date();
+	var firstDay = new Date(JSON.parse(appSettings.getString('firstDay')));
+	var sinceFirstDay = Math.round(Math.abs((today.getTime() - firstDay.getTime()) / DAY_IN_MS));
+	return (sinceFirstDay % 28);
+}
+
 
 /* export: isOnPeriod
  * ----------------
  * Returns whether or not the user is on their period
- * TODO: fix
  */
 exports.isOnPeriod = function () {
 	if (ComputeUtil.getCycleDay() > exports.getPeriodLength()) {
@@ -160,29 +73,18 @@ exports.isOnPeriod = function () {
 
 /* export: minsTillBirthControl
  * ----------------
- * Returns the number of minutes until the user has to take their birth control -- today if before bc time
- * and tomorrow if after bc time
+ * Returns the number of minutes until the user has to take their birth control
  */
 exports.minsTillBirthControl = function () {
-	var beforePillTimeToday = ComputeUtil.beforePillTimeToday();
 	var birthControlTime = exports.getBirthControlTime();
 	var bcToday = new Date();
 	bcToday.setHours(birthControlTime.getHours(), birthControlTime.getMinutes(), 0);
-	var today = new Date();
-	var minutesTillBirthControl = 0;
-	if (beforePillTimeToday) {
-		//If right now is before I take my birth control today
-		minutesTillBirthControl = Math.round((bcToday - today) / MIN_IN_MS);
-	} else {
-		//If I took my pill today
-		var bcTomorrow = new Date();
-		bcTomorrow.setHours(birthControlTime.getHours(), birthControlTime.getMinutes(), 0);
-		bcTomorrow.setDate(today.getDate() + 1);
-		minutesTillBirthControl = Math.round((bcTomorrow - today) / MIN_IN_MS);
-	}
+	var today = new Date();;
+	var minutesTillBirthControl = Math.round((bcToday - today) / MIN_IN_MS);
 	console.log("minutes till birth fcontrol " + minutesTillBirthControl);
 	return minutesTillBirthControl;
 }
+
 
 
 
@@ -218,29 +120,12 @@ exports.setFirstCycleDay = function (date) {
 	appSettings.setString('firstDay', JSON.stringify(date));
 };
 
-/* export: getFirstCycleDay
+/* export: getCycleDay
  * ----------------
- * Returns the user's first date (ever) in their cycle
+ * Returns the user's first day (ever) in their cycle
  */
 exports.getFirstCycleDay = function () {
 	return new Date(JSON.parse(appSettings.getString('firstDay')));
-};
-
-
-/* export: setPeriodStartDay
- * ----------------
- * Sets the user's first day of their period in their cycle
- */
-exports.setPeriodStartDay = function (date) {
-	appSettings.setString('firstPeriodDay', JSON.stringify(date));
-};
-
-/* export: getPeriodStartDay
- * ----------------
- * Returns the user's first day (ever) of their period in their cycle
- */
-exports.getPeriodStartDay = function () {
-	return new Date(JSON.parse(appSettings.getString('firstPeriodDay')));
 };
 
 /* export: setPeriodLength
@@ -269,16 +154,6 @@ exports.setBirthControlTime = function (time) {
 	dateTime.setHours(time.getHours(), time.getMinutes(), 0);
 	appSettings.setString('bctime', JSON.stringify(dateTime));
 };
-
-/* export: setDefaultBCTime
- * ----------------
- * Sets the user's birthcontrol time to 9:00am
- */
-exports.setDefaultBCTime = function () {
-	var dateTime = new Date(2018, 1, 1);
-	dateTime.setHours(9, 0, 0);
-	appSettings.setString('bctime', JSON.stringify(dateTime));
-}
 
 
 /* export: getBirthControlTime
@@ -353,12 +228,9 @@ exports.isOnboardingComplete = function () {
  * onboarding anymore.
  */
 exports.setOnboardingComplete = function () {
-	exports.setDefaultlastTimePillTaken();
-	console.log("in onborading complete... setting pill state now");
-	exports.setPillState();
-	// if (exports.getName() && exports.getPeriodLength() && exports.getFirstCycleDay() && exports.getBirthControlType()) {
-	appSettings.setBoolean('onboardingComplete', true);
-	// }
+	if (exports.getName() && exports.getPeriodLength() && exports.getFirstCycleDay() && exports.getBirthControlType()) {
+		appSettings.setBoolean('onboardingComplete', true);
+	}
 };
 
 /* export: clearData
