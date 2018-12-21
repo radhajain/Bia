@@ -284,52 +284,51 @@ function yesterday(d1, d2) {
 }
 
 
-function initBirthControl() {
-	var timeToTakePill = StorageUtil.getBirthControlTime();
-	var options = {
-		timeZone: 'UTC',
-		timeZoneName: 'short'
-	};
+function printHourMins(countdownMins) {
+	var hours = Math.floor(countdownMins / 60);
+	var mins = countdownMins % 60;
+	var bcTime;
+	if (hours > 0) {
+		if (mins > 0) {
+			bcTime = hours + " hrs " + mins + " mins";
+		} else {
+			bcTime = hours + " hrs";
+		}
+	} else {
+		bcTime = mins + " mins";
+	}
+	return bcTime;
+}
 
+
+//TODO: modify so that corresponds with pill state
+function initBirthControl() {
+	var timeToTakePill = ComputeUtil.printSimpleBCTime();
 	var type = StorageUtil.getBirthControlType();
-	var msg = "You are currently using the " + type + " pill, at " + timeToTakePill.toLocaleTimeString('en-US', options) + ".";
+	var msg = "You are currently taking the " + type + " pill, usually taken at " + timeToTakePill + ". \n \n";
 	// Countdown element
 
 	//StorageUtil.minsTillBirthControl assumes you took the pill as normal yesterday/today
-	msg += "\n Scheduled to be taken in: ";
+
 	var countdownMins = StorageUtil.minsTillBirthControl();
-	console.log("time taken from extended view: " + timeToTakePill.toString());
-	var timePillTakenLast = StorageUtil.getlastTimePillTaken();
-	var today = new Date();
-	//var tookPillToday = sameDay(today, timePillTakenLast);
-	var tookPillToday = false;
-	var tookPillYesterday = true;
-	//var tookPillYesterday = yesterday(today, timePillTakenLast)
-
-
 	var bcTime;
-	if (tookPillToday) {
-		countdownMins += MINS_IN_DAY
-		var numHours = Math.floor(countdownMins / 60);
-		var numMins = countdownMins % 60;
-		if (numHours > 0) {
-			bcTime = numHours + " hrs " + numMins + " mins";
-		} else {
-			bcTime = minutesCountdown + " mins";
-		}
-		pageData.set("bcTime", bcTime);
-	} else if (tookPillYesterday) {
-		var numHours = Math.floor(countdownMins / 60);
-		var numMins = countdownMins % 60;
-		if (numHours > 0) {
-			bcTime = numHours + " hrs " + numMins + " mins";
-		} else {
-			bcTime = numMins + " mins";
-		}
+	//normal, asap, two-asap, tomorrow
+	var nextPillState = InfoUtil.nextPillAt();
+	if (nextPillState == "normal") {
+		msg += "Scheduled to be taken in:";
+		bcTime = printHourMins(countdownMins);
+	} else if (nextPillState == "asap" || nextPillState == "two-asap") {
+		msg += "To be protected, take your pill within the next:"
+		var minsTillBCLateEnd = ComputeUtil.minsTillBCLateEnd();
+		bcTime = printHourMins(minsTillBCLateEnd);
+		var countdown = page.getViewById("countdown");
+		countdown.className = "countdownAlert";
+
 	}
 	pageData.set("bcTime", bcTime);
 	pageData.set("bcText", msg);
 }
+
 
 
 

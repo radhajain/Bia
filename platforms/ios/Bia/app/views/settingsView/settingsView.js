@@ -27,6 +27,8 @@ exports.pageNavigating = function (args) {
 
 }
 
+//TODO: update settings view to be able to change what day of birth control you are on and what type of birth control you take.
+
 /*********************
 INITIATION FUNCTIONS*
 *********************/
@@ -171,6 +173,7 @@ exports.updateBCTime = function () {
 
 }
 
+//If update time, still shows dialog
 exports.goToExtendedView = function () {
 	exports.updateName();
 	exports.updatePeriodLength();
