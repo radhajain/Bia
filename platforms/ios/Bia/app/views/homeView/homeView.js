@@ -16,10 +16,10 @@ var page;
 
 exports.pageLoaded = function (args) {
 	//TEMP
-	var temp = new Date();
-	var otherTemp = new Date();
-	otherTemp.setDate(temp.getDate() - 2);
-	StorageUtil.setlastTimePillTaken(otherTemp);
+	// var temp = new Date();
+	// var otherTemp = new Date();
+	// otherTemp.setDate(temp.getDate() - 2);
+	// StorageUtil.setlastTimePillTaken(temp);
 	//TEMP
 	page = args.object;
 	page.bindingContext = pageData;

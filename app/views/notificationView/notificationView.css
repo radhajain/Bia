@@ -10,13 +10,11 @@ Label {
 	color: white;
 }
 
-#grid {
+.grid {
 	width: 80%;
 	margin-top: 5%;
-	margin-bottom: -7%;
 	margin-left: 10%;
 	margin-right: 10%;
-	height: 80%;
 
 }
 
@@ -29,15 +27,16 @@ Label {
 	font-weight: bold;
 }
 
-#timePicker {
-	height: 300px;
-	z-index: 1;
-	margin: 5%;
+
+.notifOption {
+	color: white;
+	font-family: Avenir;
+
 }
 
-#datePicker {
-	height: 300px;
-	margin-top: 40px;
+
+.notifCustom {
+	color: #EA9D97;
 }
 
 .doneBtn {
@@ -45,7 +44,7 @@ Label {
 	margin-bottom: 40px;
 }
 
-.labelStack {
+#stackPage {
 	margin-top: 5%;
 }
 
@@ -71,6 +70,7 @@ Label {
 
 .settingsBtn {
 	border-width: 3px;
+	margin-top: 10%;
 	color: white;
 	border-color: white;
 	font-size: 11%;

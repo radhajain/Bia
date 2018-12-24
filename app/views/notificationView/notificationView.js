@@ -11,25 +11,11 @@ var dialogs = require("ui/dialogs");
 
 var page;
 var pageData;
-var pageHeight;
-var currChoice;
 
 exports.pageLoaded = function (args) {
 	page = args.object;
 	page.bindingContext = pageData;
-	pageHeight = platform.screen.mainScreen.heightDIPs;
-	pageData.set("showTimePicker", false);
-	pageData.set("showDatePicker", false);
-	pageData.set("showSave", true);
-	initName();
-	initFormatting();
-	if (StorageUtil.getDoesGetPeriod()) {
-		initPeriodLength();
-		initPeriodStart();
-		initPeriodYes();
-	} else {
-		initPeriodNo();
-	}
+	pageData.set("showCustom", false);
 }
 
 //TODO: update settings view to be able to change what day of birth control you are on and what type of birth control you take.
@@ -176,15 +162,6 @@ exports.updateBCTime = function () {
 	newTime.setMinutes(timePicker.minute);
 	console.log(newTime.toString());
 	StorageUtil.setBirthControlTime(newTime);
-
-}
-
-exports.showNotificationOptions = function() {
-	exports.updateName();
-	exports.updatePeriodLength();
-	exports.updateBCTime();
-	StorageUtil.setPillState();
-	frameModule.topmost().navigate('views/notificationView/notificationView');
 
 }
 
