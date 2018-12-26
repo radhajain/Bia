@@ -213,6 +213,7 @@
 		161D8872C1BB4B4C8A59325A /* pinkCircle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E95AE30D1A5648A1B8867134 /* pinkCircle@3x.png */; };
 		62F5EDBD84294C56BB90CAD0 /* TNSWidgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865A95A34B834889827BCFC0 /* TNSWidgets.framework */; };
 		0C9FE76C1E484C189FC0E6D0 /* TNSWidgets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 865A95A34B834889827BCFC0 /* TNSWidgets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92C5259A6B54462BBCF9E1D9 /* angle-right-solid.svg in Resources */ = {isa = PBXBuildFile; fileRef = 25B076D3BB624CA19248D43E /* angle-right-solid.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -443,6 +444,7 @@
 		E739714997B34CEC9780D4C7 /* pinkCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pinkCircle@2x.png"; path = "Bia/Resources/pinkCircle@2x.png"; sourceTree = "<group>"; };
 		E95AE30D1A5648A1B8867134 /* pinkCircle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pinkCircle@3x.png"; path = "Bia/Resources/pinkCircle@3x.png"; sourceTree = "<group>"; };
 		865A95A34B834889827BCFC0 /* TNSWidgets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TNSWidgets.framework; path = "$(SRCROOT)/../../node_modules/tns-core-modules-widgets/platforms/ios/TNSWidgets.framework"; sourceTree = "<group>"; };
+		25B076D3BB624CA19248D43E /* angle-right-solid.svg */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "angle-right-solid.svg"; path = "Bia/Resources/angle-right-solid.svg"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -712,6 +714,7 @@
 				CD3778514BB84A83B21558EA /* pinkCircle@1x.png */,
 				E739714997B34CEC9780D4C7 /* pinkCircle@2x.png */,
 				E95AE30D1A5648A1B8867134 /* pinkCircle@3x.png */,
+				25B076D3BB624CA19248D43E /* angle-right-solid.svg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 				A1CDE148A77A4CCF947266D2 /* pinkCircle@1x.png in Resources */,
 				3B585603A22841169465A048 /* pinkCircle@2x.png in Resources */,
 				161D8872C1BB4B4C8A59325A /* pinkCircle@3x.png in Resources */,
+				92C5259A6B54462BBCF9E1D9 /* angle-right-solid.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,16 +14,6 @@
 			<Button row="0" col="2" text="no" tap="setNoGetPeriod" class="buttonOption" id="noBtn"/>
 		</GridLayout>
 
-		<!-- <StackLayout visibility="{{ getsPeriod ? 'visible' : 'collapse'}}" style="margin-top: 3%;">
-
-			<Label text="My Period Usually Lasts" class="prompt"/>
-			<TextField text="{{ periodLength }}" keyboardType="phone" focus="onFocus" id="periodLength"/>
-			<Label text="days" class="numDays"/>
-
-		</StackLayout> -->
-
-
-
 		<Image src="res://RightArrow" stretch="aspectFit" tap="goToNextView" class="arrow"/>
 
 	</StackLayout>

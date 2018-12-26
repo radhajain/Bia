@@ -5,27 +5,34 @@ var pageData = new observable.Observable();
 const DatePicker = require("tns-core-modules/ui/date-picker").DatePicker;
 var StorageUtil = require("~/util/StorageUtil");
 var ComputeUtil = require("~/util/ComputeUtil");
+var platform = require("platform");
 var gestures = require("ui/gestures");
 var dialogs = require("ui/dialogs");
 
 var page;
 var pageData;
+var pageHeight;
 var currChoice;
 
-exports.pageNavigating = function (args) {
+exports.pageLoaded = function (args) {
 	page = args.object;
 	page.bindingContext = pageData;
+	pageHeight = platform.screen.mainScreen.heightDIPs;
 	pageData.set("showTimePicker", false);
 	pageData.set("showDatePicker", false);
 	pageData.set("showSave", true);
 	initName();
+	initFormatting();
 	if (StorageUtil.getDoesGetPeriod()) {
 		initPeriodLength();
 		initPeriodStart();
+		initPeriodYes();
+	} else {
+		initPeriodNo();
 	}
-	initPeriodOptions();
-
 }
+
+//TODO: update settings view to be able to change what day of birth control you are on and what type of birth control you take.
 
 /*********************
 INITIATION FUNCTIONS*
@@ -41,15 +48,16 @@ function initPeriodLength() {
 	pageData.set("periodLength", periodLength);
 }
 
-function initPeriodOptions() {
-	var doesGetPeriod = StorageUtil.getDoesGetPeriod();
-	if (doesGetPeriod) {
-		page.getViewById("Yes").className = 'buttonSelected';
-		pageData.set("showPeriod", true);
-	} else {
-		page.getViewById("No").className = 'buttonSelected';
-		pageData.set("showPeriod", false);
-	}
+function initPeriodYes() {
+	var yesBtn = page.getViewById("yesPeriod")
+	yesBtn.className = "buttonSelected";
+	pageData.set("showPeriod", true);
+}
+
+function initPeriodNo() {
+	var noBtn = page.getViewById("noPeriod");
+	noBtn.className = "buttonSelected";
+	pageData.set("showPeriod", false);
 }
 
 function initPeriodStart() {
@@ -62,7 +70,7 @@ function initPeriodStart() {
 
 function initFormatting() {
 	var stackPage = page.getViewById("stackPage");
-	stackPage.height = 1.7 * pageHeight;
+	// stackPage.height = 1 * pageHeight;
 }
 
 
@@ -124,7 +132,7 @@ exports.setPeriod = function () {
 	}
 	clearSelected();
 	pageData.set("showPeriod", true);
-	page.getViewById("Yes").className = "buttonSelected";
+	page.getViewById("yesPeriod").className = "buttonSelected";
 }
 
 
@@ -135,13 +143,13 @@ exports.setNoPeriod = function () {
 	}
 	clearSelected();
 	pageData.set("showPeriod", false);
-	page.getViewById("No").className = "buttonSelected";
+	page.getViewById("noPeriod").className = "buttonSelected";
 }
 
 
 function clearSelected() {
-	page.getViewById("Yes").className = "buttonOption";
-	page.getViewById("No").className = "buttonOption";
+	page.getViewById("yesPeriod").className = "buttonOption";
+	page.getViewById("noPeriod").className = "buttonOption";
 
 }
 
@@ -171,6 +179,16 @@ exports.updateBCTime = function () {
 
 }
 
+exports.showNotificationOptions = function() {
+	exports.updateName();
+	exports.updatePeriodLength();
+	exports.updateBCTime();
+	StorageUtil.setPillState();
+	frameModule.topmost().navigate('views/notificationView/notificationView');
+
+}
+
+//If update time, still shows dialog
 exports.goToExtendedView = function () {
 	exports.updateName();
 	exports.updatePeriodLength();

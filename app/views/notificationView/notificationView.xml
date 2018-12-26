@@ -13,10 +13,13 @@
 
 		<GridLayout rows="30,30,30,30,auto" columns="*" class="grid">
 		 	<Label text="Notification Text" class="prompt" row="0" col="0"/>
-			<Button text="Time to take your pill!" row="1" col="0" class="notifOption"/>
-			<Button text="It's going to be a clear sunset tonight." row="2" col="0"  class="notifOption" />
+			<Button text="Time to take your pill!" row="1" col="0" tap="setNotif" class="notifOption"/>
+			<Button text="It's going to be a clear sunset tonight." tap="setNotif" row="2" col="0"  class="notifOption" />
 			<Button text="Custom" row="3" col="0" tap="showCustom" class="notifCustom"/>
-			<TextField visibility="{{showCustom ? 'visible' : 'collapse'}}" row="4" col="0" text="{{ customMsg }}" autocorrect="false" autocapitalization="none" style="color:white" id="customMsg" class="textField" returnPress="udpateNotif" focus="onFocus"/>
+			<GridLayout rows="30" columns="*,10">
+				<TextField row="0" col="0" visibility="{{showCustom ? 'visible' : 'collapse'}}" row="4" col="0" text="{{ customMsg }}" autocorrect="false" autocapitalization="none" style="color:white" id="customMsg" class="textField" returnPress="udpateNotif" focus="onFocus"/>
+				
+			</GridLayout>
 		</GridLayout>
 		<Button text="Save Changes" tap="goToSettingsView" class="settingsBtn"/>
 	</StackLayout>

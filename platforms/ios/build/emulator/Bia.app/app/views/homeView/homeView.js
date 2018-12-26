@@ -15,13 +15,16 @@ var pageData;
 var page;
 
 exports.pageLoaded = function (args) {
-
+	//TEMP
+	// var temp = new Date();
+	// var otherTemp = new Date();
+	// otherTemp.setDate(temp.getDate() - 2);
+	// StorageUtil.setlastTimePillTaken(temp);
+	//TEMP
 	page = args.object;
 	page.bindingContext = pageData;
 	pageData.set("showWarning", false);
-	pageData.set("secondWarning", false);
-	///TEMP
-	StorageUtil.setlastTimePillTaken();
+	StorageUtil.setPillState();
 	initGreeting();
 	var cycleDay = ComputeUtil.getCycleDay();
 	initMessage(cycleDay);
@@ -53,7 +56,7 @@ exports.pageLoaded = function (args) {
 	    'address': {
 	      'street': 'foostreet',
 	      'number': 123
-	    }
+	    }Orth
 	  }
 	).then(
 	  function (result) {
@@ -64,7 +67,6 @@ exports.pageLoaded = function (args) {
 
 };
 
-
 function addNumber(cycleDay) {
 	str = "res://" + cycleDay;
 	pageData.set("number", str);
@@ -72,45 +74,71 @@ function addNumber(cycleDay) {
 
 exports.showWarning = function () {
 	var minsTillPill = StorageUtil.minsTillBirthControl();
-	var timeToTakePillAsString = StorageUtil.getBirthControlTime();
-	var timeToTakePill = new Date(timeToTakePillAsString);
-	var timePillTakenLastAsString = StorageUtil.getlastTimePillTaken();
-	var timePillTakenLast = new Date(timePillTakenLastAsString);
-	var todayAsString = new Date().toDateString();
-	var lastDayPillTookAsString = timePillTakenLast.toDateString();
-	var tookPillToday = todayAsString === lastDayPillTookAsString;
-	//var alreadyTookPillTodayBeforeScheduledTime =  timePillTakenLast < timeToTakePill;
-	console.log("in alert " + tookPillToday);
+	var simpleTime = ComputeUtil.printSimpleBCTime();
+	var reminderState = InfoUtil.nextPillAt();
+	var tookPillToday = ComputeUtil.tookPillToday();
+	console.log("pill state is: " + StorageUtil.getPillState());
+	console.log("reminder state is: " + reminderState);
+	if (reminderState == "normal") {
+		showNormalReminder(minsTillPill, simpleTime, tookPillToday);
+	} else if (reminderState == "asap") {
+		showAsapReminder(simpleTime);
+	} else if (reminderState == "two-asap") {
+		showTwoAsapReminder();
+	}
+}
+
+showNormalReminder = function (minsTillPill, simpleTime, tookPillToday) {
 	if (minsTillPill < 60 && !tookPillToday) {
 		pageData.set("showWarning", true);
-		var hours = timeToTakePill.getHours();
-		var minutes = timeToTakePill.getMinutes();
-		var ampm = hours >= 12 ? 'PM' : 'AM';
-		hours = hours % 12;
-		hours = hours ? hours : 12; // the hour '0' should be '12'
-		minutes = minutes < 10 ? '0' + minutes : minutes;
-		var strTime = hours + ':' + minutes + ' ' + ampm;
-		var msg = "Your pill is scheduled for " + strTime + ". \n Did you take your pill?";
+		var msg = "Your pill is scheduled for " + simpleTime + ". \n Did you take your pill?";
 		pageData.set("pillReminder", msg);
 	}
 }
 
+showAsapReminder = function (simpleTime) {
+	var BCLateTime = StorageUtil.getBirthControlTime();
+	BCLateTime.setHours(BCLateTime.getHours() + InfoUtil.getLatePeriod());
+	var simpleLateTime = ComputeUtil.printSimpleTime(BCLateTime.getHours(), BCLateTime.getMinutes());
+	pageData.set("showWarning", true);
+	if (StorageUtil.getBirthControlType() == "combined") {
+		var msg = "Your pill was scheduled for " + simpleTime + ". \n Take it before " + simpleTime + " tomorrow to stay protected!";
+	} else {
+		var msg = "Your pill was scheduled for " + simpleTime + ". \n If you take it before " + simpleLateTime.hours + ":" + simpleLateTime.min + simpleLateTime.ampm + " you will be protected. Take it asap!";
+	}
+
+	pageData.set("pillReminder", msg);
+
+}
+
+showTwoAsapReminder = function () {
+	pageData.set("showWarning", true);
+	var msg = "You missed 2 pills. Take 2 pills today and 2 tomorrow. Use protection for the next 7 days. \n Did you take two pills today?";
+	pageData.set("pillReminder", msg);
+}
+
+//Depending on what pill state was before
 exports.dismiss = function () {
 	//record pill taken
 	var rightNow = new Date();
-	StorageUtil.setlastTimePillTaken(rightNow.toISOString());
-	// dismissedWarning = true; -> new one every 24 hours, stored in storageUtil
+	console.log("pill state is: " + StorageUtil.getPillState());
+	if (StorageUtil.getPillState() == "late" && ComputeUtil.tookPillDayBeforeYesterday()) {
+		//Set that took pill yesterday so that doesn't dismiss pill taken today.
+		var yesterday = new Date();
+		yesterday.setDate(rightNow.getDate() - 1);
+		StorageUtil.setlastTimePillTaken(yesterday);
+	} else if (StorageUtil.getPillState() == "missed2") {
+		StorageUtil.setlastTimePillTaken(rightNow);
+	} else {
+		StorageUtil.setlastTimePillTaken(rightNow);
+	}
+	StorageUtil.setPillState();
 	pageData.set("showWarning", false);
 }
 
-exports.continueAlert = function () {
-	pageData.set("pillReminder", "You should take your pill as soon as possible");
-	pageData.set("secondWarning", true);
-
-}
 
 
-// E.g. Good Morning, Genivieve, where intro = "Good Morning, "
+// E.g. Good Morning, Radha, where intro = "Good Morning, "
 function initGreeting() {
 	var intro = StorageUtil.getGreeting();
 	var name = StorageUtil.getName();

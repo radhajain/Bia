@@ -734,7 +734,7 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		WYgKcZ7JzB+eUA6MBxOrKZXltvo=
+		VNzaTGZmxoAZotFCtGB0hfvQpH4=
 		</data>
 		<key>Frameworks/NativeScript.framework/Info.plist</key>
 		<data>
@@ -742,11 +742,11 @@
 		</data>
 		<key>Frameworks/NativeScript.framework/NativeScript</key>
 		<data>
-		14w2l6mnXlix5ETR6nR1JyFm/Tw=
+		riq/UMTqjr+6BHS5hFH2RIfStjQ=
 		</data>
 		<key>Frameworks/NativeScript.framework/_CodeSignature/CodeResources</key>
 		<data>
-		a/aXiOfK3DDpLAem7WBiKBWIjyQ=
+		K1kRz4scI4OardmtYjEYGw1ZPNM=
 		</data>
 		<key>Frameworks/TNSWidgets.framework/Info.plist</key>
 		<data>
@@ -754,11 +754,11 @@
 		</data>
 		<key>Frameworks/TNSWidgets.framework/TNSWidgets</key>
 		<data>
-		RBjm+3nGl9g8n51ngfPeYZ++UT0=
+		m7p8yHOJ3oGJVquvaZ5n6ydHBkc=
 		</data>
 		<key>Frameworks/TNSWidgets.framework/_CodeSignature/CodeResources</key>
 		<data>
-		mLZna6Hkt4fD4s7mNTF1gJqdGCQ=
+		EC0oKNw3by0dysMF8EAyyy/pzXo=
 		</data>
 		<key>GoogleService-Info.plist</key>
 		<data>
@@ -770,7 +770,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ACBrMnFHb2JyC8+TJGDWoiMWvmc=
+		NIvGXqiLAJGOjdMPVO4YjZRAW+Y=
 		</data>
 		<key>LaunchImage-1100-Landscape-2436h@3x.png</key>
 		<data>
@@ -846,7 +846,7 @@
 		</data>
 		<key>LaunchScreen.1.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		xvlUzjjoFX12+2MtCwVqS+QZ5g8=
+		IKuaqbMyhSYzqjr02xiukxl4Ih4=
 		</data>
 		<key>LaunchScreen.1.storyboardc/Info.plist</key>
 		<data>
@@ -854,11 +854,11 @@
 		</data>
 		<key>LaunchScreen.1.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		MGfmrRfPusAkt0qLLzeQYJ+iE0Q=
+		ohECNuNJp/bKgZy5aZeiDkfOgZI=
 		</data>
 		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		8TSl+72U5XMKxHgRam1RsbvRGBM=
+		HCX1ULmiKguIul4D8Z5g3uw+XS4=
 		</data>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -866,7 +866,7 @@
 		</data>
 		<key>LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		FcsSGD9LPKYHANFFsTYyLmGfT1A=
+		oHcVThqBRSZvvW2Fi4PvHe3rQ6o=
 		</data>
 		<key>LeftArrow@1x.png</key>
 		<data>
@@ -908,6 +908,10 @@
 		<data>
 		d7IpDexe2BNmLSITW7lGQG+912Y=
 		</data>
+		<key>angle-right-solid.svg</key>
+		<data>
+		OpNM4VIH9dlI9PU0O2f+nhoNKCM=
+		</data>
 		<key>app/app-root.xml</key>
 		<data>
 		kAo4bLLYq8lXNBPrOv9FRI3NNgg=
@@ -918,7 +922,7 @@
 		</data>
 		<key>app/app.js</key>
 		<data>
-		4ipetnMTBYGy2Ah/PR4600kKIps=
+		cVgXjJLCdZwHKufa90+LpLXzTVw=
 		</data>
 		<key>app/bundle-config.js</key>
 		<data>
@@ -2390,7 +2394,7 @@
 		</data>
 		<key>app/util/StorageUtil.js</key>
 		<data>
-		8MHUuHEDw1yUitxYUjSSG6t2WV4=
+		xbisWeCv7i6to0o1/0loJ8Xtoi0=
 		</data>
 		<key>app/views/extendedView/extendedView.css</key>
 		<data>
@@ -2410,11 +2414,23 @@
 		</data>
 		<key>app/views/homeView/homeView.js</key>
 		<data>
-		zcFJl1dtZMX3bSB6jvPg2cpSdqk=
+		GoN9/2aWh/3bp4HQZUZxMR6SAA0=
 		</data>
 		<key>app/views/homeView/homeView.xml</key>
 		<data>
 		mOQ0eXtLM1/Uj+gEq8NwHLr7av0=
+		</data>
+		<key>app/views/notificationView/notificationView.css</key>
+		<data>
+		Kumfiot0KfOTcFLhrQTQ66tsSc0=
+		</data>
+		<key>app/views/notificationView/notificationView.js</key>
+		<data>
+		NqQemfgoZndB4d1QlVGEh0p0Ht0=
+		</data>
+		<key>app/views/notificationView/notificationView.xml</key>
+		<data>
+		ww3YeMqa6FkFFspPRTqNAh87Jag=
 		</data>
 		<key>app/views/onboarding/bcView/bcView.css</key>
 		<data>
@@ -2434,7 +2450,7 @@
 		</data>
 		<key>app/views/onboarding/nameView/nameView.js</key>
 		<data>
-		mTiymdif4zApyZXfZ0xVfwWSbGA=
+		gecZLxUw/xwpL3R4Cb4bxlPWatU=
 		</data>
 		<key>app/views/onboarding/nameView/nameView.xml</key>
 		<data>
@@ -2462,19 +2478,19 @@
 		</data>
 		<key>app/views/onboarding/periodView/periodView.xml</key>
 		<data>
-		Am+i+8q1+z1Wgo4pGgj90mB5EtM=
+		BafWg91XLgNjsq8VkzJrIvfQayg=
 		</data>
 		<key>app/views/settingsView/settingsView.css</key>
 		<data>
-		FRG29T2iSmfGmHzppyKFoOuHjgI=
+		PoNGoF8HPNBr+GnQnz80No39g1s=
 		</data>
 		<key>app/views/settingsView/settingsView.js</key>
 		<data>
-		akDfLmp3XnflexNXv6yFeveQpKo=
+		/t5EfF/7fbuqTzhaKf32yCabBK0=
 		</data>
 		<key>app/views/settingsView/settingsView.xml</key>
 		<data>
-		YvWlVsK6l02WfjXeebQXnRzemJE=
+		3APxzGdpdCCT63F5icV08QtjRo4=
 		</data>
 		<key>arrowUp@1x.png</key>
 		<data>
@@ -4574,11 +4590,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			WYgKcZ7JzB+eUA6MBxOrKZXltvo=
+			VNzaTGZmxoAZotFCtGB0hfvQpH4=
 			</data>
 			<key>hash2</key>
 			<data>
-			UlCUMJfE9TdMdahcnXnvYUwYIRhn4VQUGY7w0P0QbQY=
+			x0EAOVq2bTyiglQUxzlko02oou1kTE0/LWJ/OdWenng=
 			</data>
 		</dict>
 		<key>Frameworks/NativeScript.framework/Info.plist</key>
@@ -4596,22 +4612,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			14w2l6mnXlix5ETR6nR1JyFm/Tw=
+			riq/UMTqjr+6BHS5hFH2RIfStjQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			yiSgCiQQySH/aJzZSY1quoybYuerM209L3IA3L2Wi0o=
+			PZjDGJkKHDZ0Qs+yPdfelacjGQtweDkQGex+WqyYGYk=
 			</data>
 		</dict>
 		<key>Frameworks/NativeScript.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			a/aXiOfK3DDpLAem7WBiKBWIjyQ=
+			K1kRz4scI4OardmtYjEYGw1ZPNM=
 			</data>
 			<key>hash2</key>
 			<data>
-			14A5KQQtJQCVp+SIKa/EHYebCFkrCjL8S6mKj0FeHJY=
+			1iw1SgSZPC0yFMvuRK/kVUSkutPA/DBON4aXVj2ku5o=
 			</data>
 		</dict>
 		<key>Frameworks/TNSWidgets.framework/Info.plist</key>
@@ -4629,22 +4645,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			RBjm+3nGl9g8n51ngfPeYZ++UT0=
+			m7p8yHOJ3oGJVquvaZ5n6ydHBkc=
 			</data>
 			<key>hash2</key>
 			<data>
-			m4u0Qn78AQP+0ecNkkF5MfqWQBr1+ztYYg/JXuVHYZ0=
+			OIwPh0QjC7TwVV9A3SAlIjTe+NWIEUm+1zu9hmzQeMo=
 			</data>
 		</dict>
 		<key>Frameworks/TNSWidgets.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mLZna6Hkt4fD4s7mNTF1gJqdGCQ=
+			EC0oKNw3by0dysMF8EAyyy/pzXo=
 			</data>
 			<key>hash2</key>
 			<data>
-			H9XwUAmnWq5+eH6GEHZCdhGLTesVCKbGHYo+AprW3vM=
+			3d/kLN3GE5zXxbT4njrAs7jNn8Na5yWjESTwj6WcG7M=
 			</data>
 		</dict>
 		<key>GoogleService-Info.plist</key>
@@ -4871,11 +4887,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xvlUzjjoFX12+2MtCwVqS+QZ5g8=
+			IKuaqbMyhSYzqjr02xiukxl4Ih4=
 			</data>
 			<key>hash2</key>
 			<data>
-			jmm2naYe9DSqz1THIRGgtrPU7VXGc57fJ2AJ2hY+If4=
+			ClUDefvVA7AsNC4gzyBq5XjfLzShPBWGRuN2YnmZsxo=
 			</data>
 		</dict>
 		<key>LaunchScreen.1.storyboardc/Info.plist</key>
@@ -4893,22 +4909,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MGfmrRfPusAkt0qLLzeQYJ+iE0Q=
+			ohECNuNJp/bKgZy5aZeiDkfOgZI=
 			</data>
 			<key>hash2</key>
 			<data>
-			nTUOfG/+mkzKoBPmfLZGvgf6XEOpoqWQWQed0rkEGXk=
+			LKDxxi4S0EMds+WB9Zgzr34pq0QS+JWhPu0SNOV2rKQ=
 			</data>
 		</dict>
 		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			8TSl+72U5XMKxHgRam1RsbvRGBM=
+			HCX1ULmiKguIul4D8Z5g3uw+XS4=
 			</data>
 			<key>hash2</key>
 			<data>
-			LC+rPwCz6CABeIri9tn+i1iDreCb6V0TEi9+sbJPY9c=
+			T9fvBYa7yPwN+TcUnK6MYCeVXCVJubbOJFcyE7IhAOQ=
 			</data>
 		</dict>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
@@ -4926,11 +4942,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FcsSGD9LPKYHANFFsTYyLmGfT1A=
+			oHcVThqBRSZvvW2Fi4PvHe3rQ6o=
 			</data>
 			<key>hash2</key>
 			<data>
-			1xNanfoN/CfMD+FaClDJFcPvHel0toYXb0HfaZt2Ypg=
+			Qb3zaNsfKKguqLTioyM/kbSK2bRFO1LqJGIhJ7fsLuo=
 			</data>
 		</dict>
 		<key>LeftArrow@1x.png</key>
@@ -5032,6 +5048,17 @@
 			ndn2w9TdJaxX/RTltwv+fhao7awrzShoKRmMaLhdZyI=
 			</data>
 		</dict>
+		<key>angle-right-solid.svg</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			OpNM4VIH9dlI9PU0O2f+nhoNKCM=
+			</data>
+			<key>hash2</key>
+			<data>
+			O9Ht27FyUn66WF8fTtKcNVESa7oyqA6/fDm+2m/m7Yg=
+			</data>
+		</dict>
 		<key>app/app-root.xml</key>
 		<dict>
 			<key>hash</key>
@@ -5058,11 +5085,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4ipetnMTBYGy2Ah/PR4600kKIps=
+			cVgXjJLCdZwHKufa90+LpLXzTVw=
 			</data>
 			<key>hash2</key>
 			<data>
-			BypnM3YmhIiesSZwz++UkAbPz0VoFYVpajJJjUBczPc=
+			fSt2LcIAjAxYOefEvCPQ6S4N6gV8cb9B6lZ0EFko8sA=
 			</data>
 		</dict>
 		<key>app/bundle-config.js</key>
@@ -9106,11 +9133,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8MHUuHEDw1yUitxYUjSSG6t2WV4=
+			xbisWeCv7i6to0o1/0loJ8Xtoi0=
 			</data>
 			<key>hash2</key>
 			<data>
-			XmUuRotMegIW28JQ+v/Eu0y9F3K+G9kpkfIscMC0Xb4=
+			spI6kzd4YnEgu6qlezGKP5LDVc4qaEyPMhpiZrB4Q2w=
 			</data>
 		</dict>
 		<key>app/views/extendedView/extendedView.css</key>
@@ -9161,11 +9188,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zcFJl1dtZMX3bSB6jvPg2cpSdqk=
+			GoN9/2aWh/3bp4HQZUZxMR6SAA0=
 			</data>
 			<key>hash2</key>
 			<data>
-			3SjsVb1rxB3LI6ytlsuwUtT96azpxxoSCN5Pt7IR3vw=
+			yqm6WPaNRngDXu3OtANGBVQoKRfk9sZAtdJkhtxzIm8=
 			</data>
 		</dict>
 		<key>app/views/homeView/homeView.xml</key>
@@ -9177,6 +9204,39 @@
 			<key>hash2</key>
 			<data>
 			r8t/5OQO+PmnAhS1aKYzPkZsNycT62ccidrNhrB1mOE=
+			</data>
+		</dict>
+		<key>app/views/notificationView/notificationView.css</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Kumfiot0KfOTcFLhrQTQ66tsSc0=
+			</data>
+			<key>hash2</key>
+			<data>
+			9X7GuH8kmAISjTeJsZeIHLbRYsr4spT+Bqr0CfdFSAg=
+			</data>
+		</dict>
+		<key>app/views/notificationView/notificationView.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			NqQemfgoZndB4d1QlVGEh0p0Ht0=
+			</data>
+			<key>hash2</key>
+			<data>
+			qkOwcUkaBncEHQBLi1CVvsjnRIwn4Q+Jkp3247FMhMg=
+			</data>
+		</dict>
+		<key>app/views/notificationView/notificationView.xml</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ww3YeMqa6FkFFspPRTqNAh87Jag=
+			</data>
+			<key>hash2</key>
+			<data>
+			iwkDWEKJfF4Fotk0xNp3gwU8+aXccysMnwOae0PnMRU=
 			</data>
 		</dict>
 		<key>app/views/onboarding/bcView/bcView.css</key>
@@ -9227,11 +9287,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mTiymdif4zApyZXfZ0xVfwWSbGA=
+			gecZLxUw/xwpL3R4Cb4bxlPWatU=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uy63rRXcSJIK+zqQJ5SATYYeCf/NN2yTImZJMI+eBfc=
+			Cih9P4x8UZGXoGhtNUIGu1d6AG+NFhCoLWHXswiQvhs=
 			</data>
 		</dict>
 		<key>app/views/onboarding/nameView/nameView.xml</key>
@@ -9304,44 +9364,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Am+i+8q1+z1Wgo4pGgj90mB5EtM=
+			BafWg91XLgNjsq8VkzJrIvfQayg=
 			</data>
 			<key>hash2</key>
 			<data>
-			ANW4IGpgTm62MrzNdra1ciu8lpOrlqlgEfV68vTeHLI=
+			ntyYqVhbjVjqXrPCnDYfXoz+klHdTcpnEWPnKN4bu50=
 			</data>
 		</dict>
 		<key>app/views/settingsView/settingsView.css</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			FRG29T2iSmfGmHzppyKFoOuHjgI=
+			PoNGoF8HPNBr+GnQnz80No39g1s=
 			</data>
 			<key>hash2</key>
 			<data>
-			5Va9ddFL7pqKPVeAsKqhgH6E/w2Xnqtnum5GUF/q23s=
+			pCkRBRCNLQQcb+/J/2zPnJPLV1iHi0mXlcOIax7eRPU=
 			</data>
 		</dict>
 		<key>app/views/settingsView/settingsView.js</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			akDfLmp3XnflexNXv6yFeveQpKo=
+			/t5EfF/7fbuqTzhaKf32yCabBK0=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ua/hg7KFemzhnxe6Frsuy5G3sgwq3NrE0DqlgMWjj7w=
+			I2yNBdYZPOU7dLxyicrOZlQlik21ZJSxPWTTTBISZeQ=
 			</data>
 		</dict>
 		<key>app/views/settingsView/settingsView.xml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			YvWlVsK6l02WfjXeebQXnRzemJE=
+			3APxzGdpdCCT63F5icV08QtjRo4=
 			</data>
 			<key>hash2</key>
 			<data>
-			h1SjpJ39Ek/dCvXdbvPa9taemoi3BuBS17cPtjZd/mc=
+			sVU3IxtE74RTSivP2g5arCYFuQYHAPPDhbFQkDOuD1s=
 			</data>
 		</dict>
 		<key>arrowUp@1x.png</key>
@@ -9580,7 +9640,7 @@
 	</dict>
 	<key>rules</key>
 	<dict>
-		<key>^</key>
+		<key>^.*</key>
 		<true/>
 		<key>^.*\.lproj/</key>
 		<dict>
@@ -9611,24 +9671,12 @@
 			<key>weight</key>
 			<real>11</real>
 		</dict>
-		<key>^</key>
-		<dict>
-			<key>weight</key>
-			<real>20</real>
-		</dict>
 		<key>^(.*/)?\.DS_Store$</key>
 		<dict>
 			<key>omit</key>
 			<true/>
 			<key>weight</key>
 			<real>2000</real>
-		</dict>
-		<key>^(Frameworks|SharedFrameworks|PlugIns|Plug-ins|XPCServices|Helpers|MacOS|Library/(Automator|Spotlight|LoginItems))/</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^.*</key>
 		<true/>
@@ -9664,13 +9712,6 @@
 			<true/>
 			<key>weight</key>
 			<real>20</real>
-		</dict>
-		<key>^[^/]+$</key>
-		<dict>
-			<key>nested</key>
-			<true/>
-			<key>weight</key>
-			<real>10</real>
 		</dict>
 		<key>^embedded\.provisionprofile$</key>
 		<dict>
