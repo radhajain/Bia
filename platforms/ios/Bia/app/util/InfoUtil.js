@@ -64,6 +64,10 @@ var popReminder = {
 }
 
 
+var notificationText = ["Time to take your pill!", "The sunset will be clear tonight"]
+
+
+
 
 //For special cases when the user misses a pill
 // Used in homeView to determine when to show a warning
