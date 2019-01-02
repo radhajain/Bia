@@ -4,6 +4,7 @@ var frameModule = require("ui/frame");
 var pageData = new observable.Observable();
 const DatePicker = require("tns-core-modules/ui/date-picker").DatePicker;
 var StorageUtil = require("~/util/StorageUtil");
+var InfoUtil = require("~/util/InfoUtil");
 var ComputeUtil = require("~/util/ComputeUtil");
 var platform = require("platform");
 var gestures = require("ui/gestures");

@@ -107,7 +107,12 @@ function bcTimeOnDay(day) {
 }
 
 
-
+exports.convertCycleDayToFirstDay = function(cycleDay) {
+    var today = new Date();
+	var firstCycleDay = new Date();
+	firstCycleDay.setDate(today.getDate() - (cycleDay - 1));
+	StorageUtil.setFirstCycleDay(firstCycleDay);
+}
 
 
 
@@ -168,7 +173,7 @@ function sameDay(date1, date2) {
 
 /* export: getCycleDay
  * ----------------
- * Gets the user's day in their cycle (e.g. 5)
+ * Gets the user's day in their cycle (e.g. 15)
  */
 exports.getCycleDay = function () {
     var today = new Date();
@@ -177,9 +182,9 @@ exports.getCycleDay = function () {
     return (sinceFirstDay % 28);
 }
 
-/* export: getCycleDay
+/* export: getDayInCycle
  * ----------------
- * Gets the user's day in their cycle (e.g. 5) given a date
+ * Gets the day in a user's cycle for a given date
  */
 exports.getDayInCycle = function (date) {
     var firstDay = StorageUtil.getFirstCycleDay();
@@ -187,18 +192,18 @@ exports.getDayInCycle = function (date) {
     return (sinceFirstDay % 28);
 }
 
-/* export: getCycleDay
+/* export: getCycleWeek
  * ----------------
- * Gets the user's week in their cycle (e.g. 3) for today
+ * Gets the week of today in a user's cycle (e.g. week 3)
  */
 exports.getCycleWeek = function () {
     var cycleDay = exports.getCycleDay();
     return (Math.round(cycleDay / 7) + 1);
 }
 
-/* export: getCycleDay
+/* export: getWeekInCycle
  * ----------------
- * Gets the user's week in their cycle (e.g. 3) for a given day
+ * Given a date, tells you what week of the cycle that day is.
  */
 exports.getWeekInCycle = function (day) {
     var cycleDay = exports.getDayInCycle(day);

@@ -25,6 +25,7 @@
 
 
 		<Label text="Your Rhythm" class="subtitle outBox"/>
+			<Label text="{{ weekDesc }}" class="message-two" />
 		<!-- Create calendar widget -->
 			<GridLayout columns="*,*,*,*,*,*,*" rows="2*,*,*,*,*,*,*,*" id="calendar">
 				<Button text="<" row="0" col="0" tap="renderPrevMonth" class="arrows"/>

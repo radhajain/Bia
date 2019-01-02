@@ -18,10 +18,11 @@ Label {
 	margin-right: 10%;
 	height: 80%;
 
+
 }
 
 .title {
-	font-size: 35%;
+	font-size: 30em;
 	color: white;
 	padding-bottom: 10%;
 	padding-top: 40%;
@@ -51,7 +52,7 @@ Label {
 
 .prompt {
 	color: #CDD8FF;
-	font-size: 15%;
+	font-size: 13em;
 	text-transform: uppercase;
 	font-family: Avenir;
 	vertical-align: top;
@@ -59,7 +60,7 @@ Label {
 
 .textField {
 	font-family: Avenir;
-	font-size: 15%;
+	font-size: 13em;
 	text-align: left;
 	vertical-align: top;
 }
@@ -67,13 +68,14 @@ Label {
 .grid {
 	text-align: left;
 	vertical-align: top;
+
 }
 
 .settingsBtn {
 	border-width: 3px;
 	color: white;
 	border-color: white;
-	font-size: 11%;
+	font-size: 11em;
 	width: 30%;
 	padding: 10%;
 	border-radius: 30%;
@@ -82,7 +84,7 @@ Label {
 
 .buttonOption {
 	color: #76a6f2;
-	font-size: 15%;
+	font-size: 13em;
 	text-transform: uppercase;
 	font-family: Avenir;
 	margin-top: -10%;
@@ -92,14 +94,9 @@ Label {
 .buttonSelected {
 	color: white;
 	font-weight: bold;
-	font-size: 15%;
+	font-size: 13em;
 	text-transform: uppercase;
 	font-family: Avenir;
 	margin-top: -10%;
 	margin-bottom: 4%
-}
-
-
-.white {
-	color: white;
 }

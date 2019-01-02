@@ -1,0 +1,76 @@
+{
+  "_from": "nativescript-push-notifications",
+  "_id": "nativescript-push-notifications@1.1.6",
+  "_inBundle": false,
+  "_integrity": "sha512-PV7sdLfhiRW2DtJbUAX15948yBdwpQl9aK4KxDvBaAE2oxuqaddPFJEQ2dTTdtAzgFK8nqAYxzQSf/vL51pgUQ==",
+  "_location": "/nativescript-push-notifications",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "nativescript-push-notifications",
+    "name": "nativescript-push-notifications",
+    "escapedName": "nativescript-push-notifications",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/nativescript-push-notifications/-/nativescript-push-notifications-1.1.6.tgz",
+  "_shasum": "235e4246358fe39c191d9613eee1142ae985566f",
+  "_spec": "nativescript-push-notifications",
+  "_where": "/Users/radhajain/Bia",
+  "author": {
+    "name": "NativeScript Team"
+  },
+  "bugs": {
+    "url": "https://github.com/NativeScript/push-plugin/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "nativescript-hook": "~0.2.4"
+  },
+  "deprecated": "nativescript-push-notifications is deprecated. Use https://www.npmjs.com/package/nativescript-plugin-firebase instead. More info on deprecation at https://github.com/NativeScript/push-plugin/issues/230",
+  "description": "Receive push notifications in your NativeScript app on Android and iOS.",
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "tns-core-modules": "^3.3.0",
+    "tns-platform-declarations": "^3.3.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.7.2"
+  },
+  "homepage": "https://github.com/NativeScript/push-plugin",
+  "license": "Apache-2.0",
+  "main": "push-plugin",
+  "name": "nativescript-push-notifications",
+  "nativescript": {
+    "platforms": {
+      "ios": "3.0.0",
+      "android": "3.0.0"
+    },
+    "hooks": [
+      {
+        "type": "before-prepare",
+        "script": "hooks/before-prepare.js",
+        "inject": true
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NativeScript/push-plugin.git"
+  },
+  "scripts": {
+    "build": "npm i && tsc",
+    "ci.tslint": "npm i && tslint '**/*.ts' --config ../tslint.json --exclude '**/node_modules/**'",
+    "clean": "cd ../demo && rimraf hooks node_modules platforms && cd ../src && rimraf node_modules",
+    "postinstall": "node scripts/postinstall.js",
+    "preuninstall": "node scripts/preuninstall.js",
+    "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\""
+  },
+  "typings": "index.d.ts",
+  "version": "1.1.6"
+}

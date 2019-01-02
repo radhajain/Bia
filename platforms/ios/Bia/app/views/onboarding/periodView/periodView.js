@@ -4,6 +4,7 @@ var frameModule = require("ui/frame");
 var pageData = new observable.Observable();
 const DatePicker = require("tns-core-modules/ui/date-picker").DatePicker;
 var StorageUtil = require("~/util/StorageUtil");
+var ComputeUtil = require("~/util/ComputeUtil");
 var gestures = require("ui/gestures");
 var dialogs = require("ui/dialogs");
 
@@ -59,10 +60,7 @@ exports.setNoGetPeriod = function (args) {
 exports.setCycleDay = function () {
 	var cycleDayField = page.getViewById("pillDay");
 	var cycleDay = cycleDayField.text;
-	var today = new Date();
-	var firstCycleDay = new Date();
-	firstCycleDay.setDate(today.getDate() - (cycleDay - 1));
-	StorageUtil.setFirstCycleDay(firstCycleDay);
+	ComputeUtil.convertCycleDayToFirstDay(cycleDay);
 }
 
 

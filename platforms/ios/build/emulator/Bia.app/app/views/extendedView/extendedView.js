@@ -47,6 +47,7 @@ exports.pageLoaded = function (args) {
 	// initExpectations();
 	// initRecommendations();
 	initCalendar();
+	initWeek();
 	initBirthControl();
 	initQuote();
 	initFormatting();
@@ -56,6 +57,11 @@ exports.pageLoaded = function (args) {
 function initNumber() {
 	str = "res://" + cycleDay + " Small";
 	pageData.set("number", str);
+}
+
+function initWeek() {
+	var week = "You are currently on week " + ComputeUtil.getCycleWeek() + " of your cycle."
+	pageData.set("weekDesc", week);
 }
 
 
@@ -81,8 +87,6 @@ function initFormatting() {
 //Set's up the static aspects of the calendar (e.g. Weekday Labels and arrows)
 function initCalendar() {
 	calendar = page.getViewById("calendar");
-	console.log("Calendar is " + calendar);
-	console.log("Page height is " + pageHeight);
 	calendar.height = 0.4 * pageHeight;
 	var today = new Date();
 	initDayLabels();

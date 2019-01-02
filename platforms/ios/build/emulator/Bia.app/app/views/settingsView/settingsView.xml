@@ -11,7 +11,6 @@
 			<TextField row="0" col="1" text="{{ name }}" autocorrect="false" autocapitalization="none" style="color:white" id="name" class="textField" returnPress="updateName" focus="onFocus"/>
 
 			<Label text="Pill Reminder" class="prompt" row="1" col="0" />
-			<Image src="res://angle-right-solid" row="1" col="1" style="color: white"/>
 			<Button row="1" col="1" text=">" tap="showNotificationOptions" class="textField" style="color: white"/>
 
 
