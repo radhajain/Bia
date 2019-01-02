@@ -23,12 +23,18 @@ exports.pageLoaded = function (args) {
 	pageData.set("showSave", true);
 	initName();
 	initFormatting();
+	initPillDay();
 	if (StorageUtil.getDoesGetPeriod()) {
 		initPeriodLength();
 		initPeriodStart();
 		initPeriodYes();
 	} else {
 		initPeriodNo();
+	}
+	if (StorageUtil.getBirthControlType() == "combined") {
+		initCombined();
+	} else {
+		initProgesterin();
 	}
 }
 
@@ -42,6 +48,12 @@ function initName() {
 	var name = StorageUtil.getName();
 	pageData.set("name", name);
 }
+
+function initPillDay() {
+	var pillDay = ComputeUtil.getCycleDay();
+	pageData.set("pillDay", pillDay);
+}
+
 
 function initPeriodLength() {
 	var periodLength = StorageUtil.getPeriodLength();
@@ -71,6 +83,17 @@ function initPeriodStart() {
 function initFormatting() {
 	var stackPage = page.getViewById("stackPage");
 	// stackPage.height = 1 * pageHeight;
+}
+
+
+function initCombined () {
+	var combinedBtn = page.getViewById("combined");
+	combinedBtn.className = "buttonSelected";
+}
+
+function initProgesterin () {
+	var popBtn = page.getViewById("pop");
+	popBtn.className = "buttonSelected";
 }
 
 
@@ -153,6 +176,34 @@ function clearSelected() {
 
 }
 
+/*********************
+SET BC TYPE*
+*********************/
+
+
+exports.setProgesterin = function () {
+	if (StorageUtil.getBirthControlType() != "progesterin-only" ) {
+		StorageUtil.setBirthControlType("progesterin-only");
+	}
+	clearSelected();
+	page.getViewById("pop").className = "buttonSelected";
+}
+
+
+exports.setCombined = function () {
+	if (StorageUtil.getBirthControlType() != "combined" ) {
+		StorageUtil.setBirthControlType("combined");
+	}
+	clearSelected();
+	page.getViewById("combined").className = "buttonSelected";
+}
+
+
+function clearSelected() {
+	page.getViewById("pop").className = "buttonOption";
+	page.getViewById("combined").className = "buttonOption";
+
+}
 
 
 /*********************
@@ -168,6 +219,12 @@ exports.updatePeriodLength = function () {
 	var enteredPdLength = page.getViewById("periodLength").text;
 	StorageUtil.setPeriodLength(enteredPdLength);
 }
+
+exports.updatePillDay = function() {
+	var enteredPillDay = page.getViewById("pillDayNum").text;
+	ComputeUtil.convertCycleDayToFirstDay(enteredPillDay);
+}
+
 
 exports.updateBCTime = function () {
 	var timePicker = page.getViewById("timePicker");
@@ -191,6 +248,7 @@ exports.showNotificationOptions = function() {
 //If update time, still shows dialog
 exports.goToExtendedView = function () {
 	exports.updateName();
+	exports.updatePillDay();
 	exports.updatePeriodLength();
 	exports.updateBCTime();
 	StorageUtil.setPillState();
