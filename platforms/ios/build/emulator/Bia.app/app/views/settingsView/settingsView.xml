@@ -1,0 +1,59 @@
+<Page loaded="pageLoaded" xmlns="http://schemas.nativescript.org/tns.xsd"  navigatingTo="pageNavigating" id="settings" class="page" actionBarHidden="true" id="settings">
+	<ScrollView orientation="vertical"> 
+	<StackLayout id="stackPage">
+		<StackLayout height="100">
+			<Label text="Settings" class="title"/>
+		</StackLayout>
+		
+
+		<GridLayout rows="50,50, 70, 50, 50, auto, 70,60,auto,50" columns="2*,*" id="grid">
+		
+			<Label text="Name" class="prompt" row="0" col="0"/>
+			<TextField row="0" col="1" text="{{ name }}" autocorrect="false" autocapitalization="none" style="color:white" id="name" class="textField" returnPress="updateName" focus="onFocus"/>
+
+			<Label text="Notifications" class="prompt" row="1" col="0" />
+			<Button row="1" col="1" text=">" tap="showNotificationOptions" class="textField" style="color: white"/>
+
+			<Label text="Pill Type" class="prompt" row="2" col="0"/>
+			<GridLayout rows="30,30" columns="*" class="grid" row="2" col="1">
+				<Button row="0" col="0" text="Progesterin" tap="setProgesterin" class="buttonOption" id="pop"/>
+				<Button row="1" col="0" text="Combined" tap="setCombined" class="buttonOption" id="combined"/>
+			</GridLayout>
+
+			<Label text="Pill Day #" class="prompt" row="3" col="0"/>
+			<TextField row="3" col="1" text="{{ pillDay }}" autocorrect="false" autocapitalization="none" style="color:white" id="pillDayNum" keyboardType="phone" class="textField" returnPress="updatePillDay" focus="onFocus"/>
+
+
+			<Label text="Time Pill is Taken" class="prompt" row="4" col="0"/>
+			<Button text="{{ pillTime }}" style="color:white" id="periodStart" class="textField" tap="selectPillTime" row="4" col="1" textWrap="true"/>
+
+			<StackLayout visibility="{{ showTimePicker ? 'visible' : 'collapse'}}" row="5" col="0" colSpan="2">
+				<TimePicker  date="{{ date }}" loaded="onPickerLoaded" verticalAlignment="center" class="m-15" id="timePicker" style="color:white"></TimePicker>
+				<Button text="Save" tap="setTime" class="doneBtn"/>
+			</StackLayout>
+
+			<Label text="Period" class="prompt" row="6" col="0"/>
+			<GridLayout rows="30,30" columns="*" class="grid" row="6" col="1">
+				<Button row="0" col="0" text="Yes" tap="setPeriod" class="buttonOption" id="yesPeriod"/>
+				<Button row="1" col="0" text="No" tap="setNoPeriod" class="buttonOption" id="noPeriod"/>
+			</GridLayout>
+			
+			<Label visibility="{{showPeriod ? 'visible' : 'collapse'}}" text="Last Period Start Day" class="prompt" row="7" col="0"/>
+			<Button visibility="{{showPeriod ? 'visible' : 'collapse'}}" row="7" col="1" text="{{ periodStartDay }}" id="periodStart" class="textField" tap="selectPeriodStart" style="color:white" textWrap="true"/>
+
+			<!-- Date Picker -->
+			<StackLayout visibility="{{ showDatePicker ? 'visible' : 'collapse'}}" row="8" col="0" colSpan="2">
+		  		<DatePicker  date="{{ date }}" style="color:white" maxDate="{{ maxDate }}" id="datePicker" ></DatePicker>
+				<Button text="Save" tap="setDate" class="doneBtn"/>
+			</StackLayout>
+			<!-- 	End Date Picker -->
+
+			<Label visibility="{{showPeriod ? 'visible' : 'collapse'}}" text="Avg. Period Length" class="prompt" row="9" col="0"/>
+			<TextField visibility="{{showPeriod ? 'visible' : 'collapse'}}" row="9" col="1" text="{{ periodLength }}" autocorrect="false" autocapitalization="none" style="color:white" id="periodLength" keyboardType="phone" class="textField" returnPress="updatePeriodLength" focus="onFocus"/>
+
+
+		</GridLayout>
+		<Button visibility="{{ showSave ? 'visible' : 'collapse'}}" text="Save Changes" tap="goToExtendedView" class="settingsBtn"/>
+	</StackLayout>
+	</ScrollView>
+</Page>

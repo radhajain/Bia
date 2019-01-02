@@ -1,0 +1,184 @@
+/*Screen Styles*/
+
+.page {
+	background-color: #081A40;
+}
+
+Label {
+	text-align: center;
+}
+
+.subtitle {
+	color: #EA9D97;
+	/*pink*/
+	font-weight: 800;
+	font-family: Butler;
+	font-size: 22px;
+}
+
+
+/***********************/
+/*Calendar Formatting*/
+/***********************/
+
+#calendar {
+	width: 80%;
+}
+
+.monthTitle {
+	color: white;
+	font-family: Butler;
+	font-weight: bold;
+	font-size: 20%;
+	padding: 15%;
+	/*text-transform: uppercase;*/
+}
+
+.dayHeaders {
+	color: #EA9D97;
+	/*pink*/
+	font-weight: bold;
+	font-family: serif;
+	font-size: 15%;
+	border-bottom-width: 1px;
+	border-bottom-color: lightblue;
+}
+
+.arrows {
+	color: #EA9D97;
+	/*pink*/
+	font-size: 15%;
+}
+
+.erase {
+	background-color: #081A40;
+}
+
+.cell {
+
+	font-size: 10%;
+	padding-top: 25%;
+	padding-bottom: 25%;
+	border-bottom-width: 1px;
+	border-bottom-color: lightblue;
+}
+
+.inactive {
+	color: gray;
+}
+
+.active {
+	color: white;
+}
+
+.circle {
+	border-width: 2px;
+	border-color: white;
+	/*border-radius: 50%;*/
+}
+
+.period {
+	background-color: #EA9D97;
+}
+
+
+.label {
+	color: white;
+	font-family: Avenir;
+	font-size: 11%;
+	margin-left: 2%;
+}
+
+.right {
+	margin-left: 10%;
+}
+
+.labelKey {
+	width: 15px;
+}
+
+.ovulation {
+	background-color: #253D5F;
+}
+
+#key {
+	margin-top: 2%;
+	margin-left: 22%;
+}
+
+
+
+/***********************/
+/*Countdown Timer*/
+/***********************/
+
+.outBox {
+	margin-top: 3%;
+	margin-bottom: 2%;
+}
+
+.bcBox {
+	margin-top: 3%
+}
+
+.message-two {
+	font-size: 12px;
+	width: 60%;
+	color: lightblue;
+	line-height: 2;
+	font-family: Avenir;
+}
+
+.countdown {
+	font-size: 35%;
+	width: 80%;
+	font-family: Butler;
+	font-weight: bold;
+	color: white;
+	padding: 25%;
+}
+
+
+.countdownAlert {
+	color: #E87E73;
+	font-size: 35%;
+	width: 80%;
+	font-family: Butler;
+	font-weight: bold;
+	padding: 25%;
+
+}
+
+.settingsBtn {
+	border-width: 3px;
+	color: white;
+	border-color: white;
+	font-size: 11%;
+	width: 30%;
+	padding: 10%;
+	border-radius: 30%;
+	margin-bottom: 3%;
+	margin-top: 1%;
+}
+
+
+/***********************/
+/*Quote*/
+/***********************/
+
+
+.quote {
+	font-weight: bold;
+	font-style: italic;
+	margin-top: 50px;
+	padding: 8%;
+	width: 80%;
+	font-family: Avenir;
+}
+
+.author {
+	font-family: Butler;
+	font-weight: bolder;
+	color: #EA9D97;
+	text-transform: uppercase;
+}

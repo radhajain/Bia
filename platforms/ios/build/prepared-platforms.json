@@ -1,0 +1,19 @@
+{
+    "nativescript-push-notifications": true,
+    "nativescript-theme-core": true,
+    "tns-core-modules": true,
+    "nativescript-hook": true,
+    "tns-core-modules-widgets": true,
+    "glob": true,
+    "mkdirp": true,
+    "inflight": true,
+    "inherits": true,
+    "minimatch": true,
+    "once": true,
+    "path-is-absolute": true,
+    "minimist": true,
+    "wrappy": true,
+    "brace-expansion": true,
+    "balanced-match": true,
+    "concat-map": true
+}
