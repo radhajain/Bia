@@ -3,6 +3,7 @@
 		<Image src="res://gettingStarted" stretch="aspectFit" class="oval"></Image>
 
 		<Label text="What type of pill do you take?" class="prompt" textWrap="true"/>
+		<Label text="If you have different colored pills in your pack, you probably take the combined pill." class="hint" textWrap="true"/>
 		<GridLayout rows="auto" columns="*,4*,4*,*" class="center">
 			<Button row="0" col="1" text="Combined" tap="setCombinedPill" class="buttonOption" id="combinedBtn"/>
 			<Button row="0" col="2" text="Progesterin-only" textWrap="true" tap="setPOPPill" class="buttonOption" id="popBtn"/>

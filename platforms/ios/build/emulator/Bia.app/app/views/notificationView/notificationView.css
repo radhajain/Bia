@@ -31,12 +31,18 @@ Label {
 .notifOption {
 	color: white;
 	font-family: Avenir;
+}
 
+.notifSelected {
+	color: white;
+	font-weight: bold;
+	font-family: Avenir;
 }
 
 
 .notifCustom {
 	color: #EA9D97;
+	font-family: Avenir;
 }
 
 .doneBtn {

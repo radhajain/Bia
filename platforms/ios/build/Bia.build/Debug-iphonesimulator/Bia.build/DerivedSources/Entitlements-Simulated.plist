@@ -4,9 +4,7 @@
 <dict>
 	<key>application-identifier</key>
 	<string>8CRVU9P879.org.nativescript.Bia</string>
-	<key>keychain-access-groups</key>
-	<array>
-		<string>8CRVU9P879.org.nativescript.Bia</string>
-	</array>
+	<key>aps-environment</key>
+	<string>development</string>
 </dict>
 </plist>

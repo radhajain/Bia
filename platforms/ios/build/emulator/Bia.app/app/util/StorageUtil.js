@@ -19,7 +19,7 @@ exports.setlastTimePillTaken = function (date) {
 }
 
 //Default set the last pill time taken was yesterday if before BC Timte
-//Otherwise, to today 
+//Otherwise, to today
 exports.setDefaultlastTimePillTaken = function () {
 	console.log("setting default last pill date taken...");
 	var today = new Date();
@@ -27,6 +27,7 @@ exports.setDefaultlastTimePillTaken = function () {
 		return appSettings.setString('lastTimePillTaken', JSON.stringify(today));
 	} else {
 		var bcDate = new Date();
+		// this might be broken since using string now not Date object
 		bcDate.setDate(today.getDate() - 1);
 		appSettings.setString('lastTimePillTaken', JSON.stringify(bcDate));
 	}
@@ -38,6 +39,7 @@ exports.setDefaultlastTimePillTaken = function () {
  */
 exports.getlastTimePillTaken = function () {
 	console.log("getting pill date");
+	//not in utc and should be
 	var time = new Date(JSON.parse(appSettings.getString('lastTimePillTaken')));
 	console.log("last pill taken at " + time);
 	return time;
@@ -158,6 +160,11 @@ exports.setNotificationEnabled = function (enabled) {
 
 exports.setNotificationString = function (msg) {
 	return appSettings.setString("notifString", msg);
+}
+
+exports.setDefaultNotificationString = function () {
+	var msgs = InfoUtil.getNotificationText();
+	return appSettings.setString("notifString", msgs[0]);
 }
 
 exports.getNotificationString = function (msg) {
@@ -289,6 +296,8 @@ exports.setBirthControlTime = function (time) {
 	// new Date(year, month, day, hours, minutes, seconds, milliseconds)
 	var dateTime = new Date(2018, 1, 1);
 	dateTime.setHours(time.getHours(), time.getMinutes(), 0);
+	var UTCTime = dateTime.toUTCString();
+	appSettings.setString('bctimeUTC', JSON.stringify(UTCTime));
 	appSettings.setString('bctime', JSON.stringify(dateTime));
 };
 
@@ -308,10 +317,10 @@ exports.setDefaultBCTime = function () {
  * Gets the user's chosen birth control time
  */
 exports.getBirthControlTime = function () {
-	//what is returned if bctime is not set?
 	var BCtime = new Date(JSON.parse(appSettings.getString('bctime')));
-	if (BCtime) {
-		return BCtime;
+	var BCtimeUTC = new Date(BCtime.toUTCString());
+	if (BCtimeUTC) {
+		return BCtimeUTC;
 	} else {
 		var defaultTime = new Date(2018, 1, 1, 9, 30);
 		exports.setBirthControlTime(defaultTime);

@@ -214,6 +214,8 @@
 		62F5EDBD84294C56BB90CAD0 /* TNSWidgets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865A95A34B834889827BCFC0 /* TNSWidgets.framework */; };
 		0C9FE76C1E484C189FC0E6D0 /* TNSWidgets.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 865A95A34B834889827BCFC0 /* TNSWidgets.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		92C5259A6B54462BBCF9E1D9 /* angle-right-solid.svg in Resources */ = {isa = PBXBuildFile; fileRef = 25B076D3BB624CA19248D43E /* angle-right-solid.svg */; };
+		C47D7F0CD5CD47D3924789A1 /* PushPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39929151CA2F45A3BA61687E /* PushPlugin.framework */; };
+		C136B3D754B0422296B9EB51 /* PushPlugin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39929151CA2F45A3BA61687E /* PushPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -224,6 +226,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0C9FE76C1E484C189FC0E6D0 /* TNSWidgets.framework in Embed Frameworks */,
+				C136B3D754B0422296B9EB51 /* PushPlugin.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +448,7 @@
 		E95AE30D1A5648A1B8867134 /* pinkCircle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pinkCircle@3x.png"; path = "Bia/Resources/pinkCircle@3x.png"; sourceTree = "<group>"; };
 		865A95A34B834889827BCFC0 /* TNSWidgets.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TNSWidgets.framework; path = "$(SRCROOT)/../../node_modules/tns-core-modules-widgets/platforms/ios/TNSWidgets.framework"; sourceTree = "<group>"; };
 		25B076D3BB624CA19248D43E /* angle-right-solid.svg */ = {isa = PBXFileReference; lastKnownFileType = unknown; name = "angle-right-solid.svg"; path = "Bia/Resources/angle-right-solid.svg"; sourceTree = "<group>"; fileEncoding = 4; };
+		39929151CA2F45A3BA61687E /* PushPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushPlugin.framework; path = "$(SRCROOT)/../../node_modules/nativescript-push-notifications/platforms/ios/PushPlugin.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62F5EDBD84294C56BB90CAD0 /* TNSWidgets.framework in Frameworks */,
+				C47D7F0CD5CD47D3924789A1 /* PushPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				865A95A34B834889827BCFC0 /* TNSWidgets.framework */,
+				39929151CA2F45A3BA61687E /* PushPlugin.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1150,6 +1156,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../node_modules/tns-core-modules-widgets/platforms/ios\"",
+					"\"$(SRCROOT)/../../node_modules/nativescript-push-notifications/platforms/ios\"",
 				);
 			};
 			name = Debug;
@@ -1172,6 +1179,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../node_modules/tns-core-modules-widgets/platforms/ios\"",
+					"\"$(SRCROOT)/../../node_modules/nativescript-push-notifications/platforms/ios\"",
 				);
 			};
 			name = Release;

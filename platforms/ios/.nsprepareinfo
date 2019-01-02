@@ -1,11 +1,11 @@
 {
-	"time": "Wed Jan 02 2019 14:15:41 GMT+0000 (Greenwich Mean Time)",
+	"time": "Wed Jan 02 2019 15:39:39 GMT+0000 (Greenwich Mean Time)",
 	"nativePlatformStatus": "3",
 	"bundle": false,
 	"release": false,
-	"changesRequireBuild": false,
-	"projectFileHash": "da566c563a5088feab9404f40dfc6ef13e41f3114fe633b3d4a08f5a7016f30b",
-	"changesRequireBuildTime": "Mon Dec 24 2018 15:34:25 GMT+0100 (Central European Standard Time)",
+	"changesRequireBuild": true,
+	"projectFileHash": "a8baa2e84a929bd842e61d2edd91127d3be06acf58d690d8892f134bea0608ce",
+	"changesRequireBuildTime": "Wed Jan 02 2019 15:39:39 GMT+0000 (Greenwich Mean Time)",
 	"appFilesHashes": {
 		"/Users/radhajain/Bia/app/app-root.xml": "900a386cb2d8abc9573413eb3aff45448dcd3608",
 		"/Users/radhajain/Bia/app/app.css": "6b35cf7fc669764bd611ef9fe3164457246cfaed",
