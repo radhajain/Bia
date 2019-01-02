@@ -162,6 +162,11 @@ exports.setNotificationString = function (msg) {
 	return appSettings.setString("notifString", msg);
 }
 
+exports.setDefaultNotificationString = function () {
+	var msgs = InfoUtil.getNotificationText();
+	return appSettings.setString("notifString", msgs[0]);
+}
+
 exports.getNotificationString = function (msg) {
 	return appSettings.getString("notifString");
 }
@@ -312,7 +317,6 @@ exports.setDefaultBCTime = function () {
  * Gets the user's chosen birth control time
  */
 exports.getBirthControlTime = function () {
-	//what is returned if bctime is not set?
 	var BCtime = new Date(JSON.parse(appSettings.getString('bctime')));
 	var BCtimeUTC = new Date(BCtime.toUTCString());
 	if (BCtimeUTC) {

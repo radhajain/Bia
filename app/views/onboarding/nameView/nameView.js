@@ -16,7 +16,7 @@ exports.pageNavigating = function (args) {
 	page.bindingContext = pageData;
 	///MOVE THIS TO WHERE IT SHOULD BE (AFTER PERMISSIONS)
 	StorageUtil.setNotificationEnabled(true);
-	StorageUtil.setNotificationString("It's pill time!!");
+	StorageUtil.setDefaultNotificationString();
 	//______________
 	if (StorageUtil.getName()) {
 		var nameText = page.getViewById("name");

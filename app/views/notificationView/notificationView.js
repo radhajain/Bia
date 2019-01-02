@@ -11,6 +11,7 @@ var dialogs = require("ui/dialogs");
 
 var page;
 var pageData;
+var notifOptions;
 
 exports.pageLoaded = function (args) {
 	page = args.object;
@@ -23,6 +24,7 @@ exports.pageLoaded = function (args) {
 		var noPush = page.getViewById("noPush");
 		noPush.className = "buttonSelected";
 	}
+	initNotifText();
 }
 
 
@@ -58,10 +60,19 @@ function clearSelected() {
 }
 
 
-
 /*********************
-UPDATE & SAVE CHANGES*
+UPDATE NOTIFICATION TEXT CHANGES*
 *********************/
+
+
+function initNotifText() {
+	notifOptions = InfoUtil.getNotificationText();
+	// for (var i = 0; i < notifOptions.size(); i++) {
+		//Add in text for list - using listview from nativescript
+	// }
+}
+
+
 
 
 

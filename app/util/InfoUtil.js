@@ -17,7 +17,7 @@ var combinedResponse = {
 	},
 	missed3: {
 		week1or2: "You missed three pills. Start a new pack, and use backup birth control for the next 7 days.",
-		week3: "You missed three pills. Start a new pack. \n \n Use backup birth control for the next 7 days.",
+		week3: "You missed three pills. Start a new pack. \n \n Use backup birth control for the next 7 days.", //start a new pack when? today? if so- change reminder state to asap
 		week4: "You missed three pills. Discard your missed pill and take your next pill at normal time tomorrow. \n \n You don't need to use additional protection."
 	}
 }
@@ -67,6 +67,9 @@ var popReminder = {
 var notificationText = ["Time to take your pill!", "The sunset will be clear tonight"]
 
 
+exports.getNotificationText = function() {
+	return notificationText;
+}
 
 
 //For special cases when the user misses a pill

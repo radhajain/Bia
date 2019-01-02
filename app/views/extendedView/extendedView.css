@@ -170,6 +170,7 @@ Label {
 .quote {
 	font-weight: bold;
 	font-style: italic;
+	margin-top: 50px;
 	padding: 8%;
 	width: 80%;
 	font-family: Avenir;
