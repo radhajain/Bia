@@ -54,9 +54,9 @@ exports.getPillState = function () {
 	return appSettings.getString('pillstate');
 };
 
-/* export: getName
+/* export: setPillState
  * ---------------
- * Retrieves the user's name
+ * Sets the users pill state according to what pill they take
  */
 exports.setPillState = function () {
 	var BCtime = exports.getBirthControlTime();
@@ -70,10 +70,18 @@ exports.setPillState = function () {
 
 function setCombinedPillState(BCtime, now) {
 	//If after BCtime today
+	var prevPillState = exports.getPillState();
+	console.log("previous pill state was... " + prevPillState);
 	if (!ComputeUtil.beforePillTimeToday()) {
 		if (ComputeUtil.tookPillToday()) {
-			return appSettings.setString('pillstate', "ok");
-		}
+			if (prevPillState == "ok" || prevPillState == "late" || prevPillState == "missed" || prevPillState == "twoToday") {
+				return appSettings.setString('pillstate', "ok");
+			} else if (prevPillState = "missed2") {
+				var response = InfoUtil.getMissedTwoResponse();
+				console.log("curr pill state is... " + response);
+				return appSettings.setString('pillstate', response);
+			}
+		}  
 		if ((now.getHours() - BCtime.getHours()) < InfoUtil.getLatePeriod() && ComputeUtil.tookPillYesterday()) {
 			return appSettings.setString('pillstate', "late");
 		} else {

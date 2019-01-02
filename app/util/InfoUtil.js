@@ -6,25 +6,31 @@ var combinedResponse = {
 	ok: "You're all set!",
 	late: "You are late. Remember to take your pill.",
 	missed: {
-		week1or2: "You missed your pill. Take it asap, and take your next pill at regular time. \n \n You don't need to use any backup birth control.",
-		week3: "You missed your pill. Take it asap, and take your next pill at regular time. \n \n You don't need to use any backup birth control.",
-		week4: "You missed a pill. Discard your missed pill and take your next pill at normal time tomorrow. \n \n You don't need to use additional protection."
+		week1or2: "You missed a pill. Take it asap! \n You don't need to use additional protection.",
+		week3: "You missed a pill. Take it asap! \n You don't need to use any backup birth control.",
+		week4: "You missed a pill. Discard the missed pill and take your next pill at normal time tomorrow. \n \n You don't need additional protection."
 	},
 	missed2: {
 		week1or2: "You missed two pills. Take two pills today, and two pills tomorrow. \n \n Use backup birth control for the next 7 days.",
-		week3: "You missed two pills. Start a new pack. \n \n Use backup birth control for the next 7 days.",
-		week4: "You missed two pills. Discard your missed pill and take your next pill at normal time tomorrow. \n \n You don't need to use additional protection."
+		week3: "You missed two pills. Start a new pack and take the pill asap. \n \n Use backup birth control for the next 7 days.",
+		week4: "You missed two pills. Discard your missed pills and take your next pill at normal time tomorrow. \n \n You don't need to use additional protection."
 	},
 	missed3: {
 		week1or2: "You missed three pills. Start a new pack, and use backup birth control for the next 7 days.",
 		week3: "You missed three pills. Start a new pack. \n \n Use backup birth control for the next 7 days.", //start a new pack when? today? if so- change reminder state to asap
 		week4: "You missed three pills. Discard your missed pill and take your next pill at normal time tomorrow. \n \n You don't need to use additional protection."
-	}
+	},
+	twoToday: "Take two pills at your regular time. \n\n Use backup birth control for the next 7 days.",
+	twoTomorrow: "You're all set for today. Take two pills at your regular time tomorrow. \n\n Use backup birth control for the next 7 days.",
+	newPackToday: "Start a new pack at your regular time today. \n\n Use additional protection for the next 7 days."
 }
 
 var combinedReminder = {
 	ok: "normal",
 	late: "asap",
+	twoToday: "twoToday",
+	twoTomorrow: "twoTomorrow",
+	newPackToday: "newPackToday",
 	missed: {
 		week1or2: "asap",
 		week3: "asap",
@@ -39,7 +45,8 @@ var combinedReminder = {
 		week1or2: "normal",
 		week3: "normal",
 		week4: "normal"
-	}
+	},
+	
 }
 
 
@@ -71,22 +78,36 @@ exports.getNotificationText = function() {
 	return notificationText;
 }
 
+exports.addNotificationOption = function(msg) {
+	notificationText.push(msg);
+}
+
+exports.getMissedTwoResponse = function() {
+	var week = ComputeUtil.getCycleWeek();
+	if (week == 1 || week == 2) {
+		if (ComputeUtil.tookPillToday()) {
+			return "twoTomorrow";
+		} else {
+			return "twoToday";
+		}
+	} else if (week == 3) {
+		return "newPackToday";
+	} else {
+		return "ok";
+	}
+}
+
 
 //For special cases when the user misses a pill
 // Used in homeView to determine when to show a warning
 exports.nextPillAt = function () {
 	var state = StorageUtil.getPillState();
 	var week = ComputeUtil.getCycleWeek();
-	//TODO: this so that we record the first day in week the pill was missed
-	// var firstDayPillMissed = StorageUtil.getlastTimePillTaken() + 1;
-	// var week = ComputeUtil.getWeekInCycle(firstDayPillMissed);
 	if (StorageUtil.getBirthControlType() == "combined") {
 		return getCombinedReminderState(state, week);
 	} else {
 		return getPOPReminderState(state, week);
 	}
-
-
 }
 
 function getPOPReminderState(state, week) {
@@ -105,7 +126,7 @@ function getPOPReminderState(state, week) {
 
 function getCombinedReminderState(state, week) {
 	var reminderState = combinedReminder[state];
-	if (state == "ok" || state == "late") {
+	if (state == "ok" || state == "late" || state == "twoToday" || state == "newPackToday" || state == "twoTomorrow") {
 		return reminderState;
 	} else {
 		if (week == 1 || week == 2) {
@@ -147,7 +168,7 @@ exports.getMessage = function () {
 function combinedMessage(state) {
 	var week = ComputeUtil.getCycleWeek();
 	var messageState = combinedResponse[state];
-	if (state == "ok" || state == "late") {
+	if (state == "ok" || state == "late" || state == "twoToday" || state == "nextPackToday" || state == "twoTomorrow") {
 		return messageState;
 	} else {
 		if (week == 1 || week == 2) {

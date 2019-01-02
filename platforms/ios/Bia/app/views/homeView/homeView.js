@@ -77,20 +77,30 @@ exports.showWarning = function () {
 	var simpleTime = ComputeUtil.printSimpleBCTime();
 	var reminderState = InfoUtil.nextPillAt();
 	var tookPillToday = ComputeUtil.tookPillToday();
-	console.log("pill state is: " + StorageUtil.getPillState());
-	console.log("reminder state is: " + reminderState);
 	if (reminderState == "normal") {
 		showNormalReminder(minsTillPill, simpleTime, tookPillToday);
 	} else if (reminderState == "asap") {
 		showAsapReminder(simpleTime);
 	} else if (reminderState == "two-asap") {
 		showTwoAsapReminder();
+	} else if (reminderState == "twoToday") {
+		showTwoTodayReminder();
+	}
+}
+
+
+
+showTwoTodayReminder = function() {
+	if (minsTillPill < 60 && !tookPillToday) {
+		pageData.set("showWarning", true);
+		var msg = "Take two pills today at " + simpleTime + ". \n Did you take your pills?";
+		pageData.set("pillReminder", msg);
 	}
 }
 
 showNormalReminder = function (minsTillPill, simpleTime, tookPillToday) {
 	if (minsTillPill < 60 && !tookPillToday) {
-		pageData.set("showWarning", true);
+		pageData.set("showWarning", true);	
 		var msg = "Your pill is scheduled for " + simpleTime + ". \n Did you take your pill?";
 		pageData.set("pillReminder", msg);
 	}
@@ -101,19 +111,14 @@ showAsapReminder = function (simpleTime) {
 	BCLateTime.setHours(BCLateTime.getHours() + InfoUtil.getLatePeriod());
 	var simpleLateTime = ComputeUtil.printSimpleTime(BCLateTime.getHours(), BCLateTime.getMinutes());
 	pageData.set("showWarning", true);
-	if (StorageUtil.getBirthControlType() == "combined") {
-		var msg = "Your pill was scheduled for " + simpleTime + ". \n Take it before " + simpleTime + " tomorrow to stay protected!";
-	} else {
-		var msg = "Your pill was scheduled for " + simpleTime + ". \n If you take it before " + simpleLateTime.hours + ":" + simpleLateTime.min + simpleLateTime.ampm + " you will be protected. Take it asap!";
-	}
-
+	var msg = InfoUtil.getMessage() + "\n Did you take your pill?";
 	pageData.set("pillReminder", msg);
 
 }
 
 showTwoAsapReminder = function () {
 	pageData.set("showWarning", true);
-	var msg = "You missed 2 pills. Take 2 pills today and 2 tomorrow. Use protection for the next 7 days. \n Did you take two pills today?";
+	var msg = "You missed 2 pills. Take 2 pills asap and 2 tomorrow. Use protection for the next 7 days. \n Did you take two pills today?";
 	pageData.set("pillReminder", msg);
 }
 
@@ -127,12 +132,15 @@ exports.dismiss = function () {
 		var yesterday = new Date();
 		yesterday.setDate(rightNow.getDate() - 1);
 		StorageUtil.setlastTimePillTaken(yesterday);
+	} else if (StorageUtil.getPillState() == "late" && ComputeUtil.tookPillYesterday()) {
+		StorageUtil.setlasTimePillTaken(rightNow);
 	} else if (StorageUtil.getPillState() == "missed2") {
 		StorageUtil.setlastTimePillTaken(rightNow);
 	} else {
 		StorageUtil.setlastTimePillTaken(rightNow);
 	}
 	StorageUtil.setPillState();
+	initMessage();
 	pageData.set("showWarning", false);
 }
 

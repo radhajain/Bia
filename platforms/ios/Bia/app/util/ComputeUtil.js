@@ -58,10 +58,13 @@ exports.beforePillTimeToday = function () {
 exports.minsTillBCLateEnd = function () {
     var now = new Date();
     var birthControlTime = StorageUtil.getBirthControlTime();
-    var bcToday = new Date();
-    bcToday.setHours(birthControlTime.getHours() + InfoUtil.getLatePeriod());
-    bcToday.setMinutes(birthControlTime.getMinutes());
-    return Math.round((bcToday - now) / MIN_IN_MS);
+    var bcLate = new Date;
+    if (!exports.tookPillYesterday()) {
+       bcLate.setDate(bcLate.getDate() - 1);
+    }
+    bcLate.setHours(birthControlTime.getHours() + InfoUtil.getLatePeriod());
+    bcLate.setMinutes(birthControlTime.getMinutes());
+    return Math.round((bcLate - now) / MIN_IN_MS);
 }
 
 exports.PopCloserDose = function () {

@@ -44,8 +44,6 @@ exports.pageLoaded = function (args) {
 			});
 		}
 	});
-	// initExpectations();
-	// initRecommendations();
 	initCalendar();
 	initWeek();
 	initBirthControl();
@@ -67,22 +65,10 @@ function initWeek() {
 
 //Since page is a scroll view, cannot dynamically set height in CSS
 function initFormatting() {
-	// var infoBox = page.getViewById("infoBox");
-	// infoBox.height = 0.3 * pageHeight;
 	var stackPage = page.getViewById("stackPage");
 	stackPage.height = 1.25 * pageHeight;
 }
 
-
-// function initExpectations() {
-// 	var expectations = InfoUtil.getExpectations(cycleDay);
-// 	pageData.set("expectations", expectations);
-// }
-
-// function initRecommendations() {
-// 	var recommendations = InfoUtil.getRecommendations(cycleDay);
-// 	pageData.set("recommendations", recommendations);
-// }
 
 //Set's up the static aspects of the calendar (e.g. Weekday Labels and arrows)
 function initCalendar() {
@@ -316,18 +302,26 @@ function initBirthControl() {
 
 	var countdownMins = StorageUtil.minsTillBirthControl();
 	var bcTime;
-	//normal, asap, two-asap, tomorrow
+	//normal, asap, two-asap, tomorrow, twoToday, newPackToday
 	var nextPillState = InfoUtil.nextPillAt();
 	if (nextPillState == "normal") {
 		msg += "Scheduled to be taken in:";
 		bcTime = printHourMins(countdownMins);
-	} else if (nextPillState == "asap" || nextPillState == "two-asap") {
-		msg += "To be protected, take your pill within the next:"
+	} else if (nextPillState == "asap") {
+		msg += "To be protected, take your pill within the next:";
 		var minsTillBCLateEnd = ComputeUtil.minsTillBCLateEnd();
 		bcTime = printHourMins(minsTillBCLateEnd);
-		var countdown = page.getViewById("countdown");
-		countdown.className = "countdownAlert";
-
+		page.getViewById("countdown").className = "countdownAlert";
+	} else if (nextPillState == "two-asap") {
+		msg += "Take two pills:";
+		bcTime = "ASAP";
+		page.getViewById("countdown").className = "countdownAlert";
+	} else if (nextPillState == "twoTomorrow" || nextPillState == "twoToday") {
+		msg += "Take two pills in:"
+		bcTime = printHourMins(countdownMins);
+	} else if (nextPillState == "newPackToday") {
+		msg += "Take the first pill from your new pack in:"
+		bcTime = printHourMins(countdownMins);
 	}
 	pageData.set("bcTime", bcTime);
 	pageData.set("bcText", msg);
